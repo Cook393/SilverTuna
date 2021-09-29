@@ -1,0 +1,62 @@
+header { 
+background-color: white; 
+background-image: url(logo.jpg);
+background-repeat: no-repeat;
+background-position: left;
+height: 150px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 80px;
+  left: 250px;
+  overflow: hidden;
+  background-color: lightblue;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: darkblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: white;
+}
+nav li a:active{
+  background-color: white
+}
+
+body{
+	background-color: white;
+}
+
+main { 
+  padding-top: 3em;
+  padding-bottom: 3em;
+  padding-left: 3em;
+  padding-right: 3em;
+  display: block; 
+  color:black;
+  background-color: #688b9a; }
+
+.active{
+  background-color: lightgreen;
+}
+
+.form-style-1 {
+  position: absolute;
+  top: 100px;
+  left: 800px;
+}
+
+
