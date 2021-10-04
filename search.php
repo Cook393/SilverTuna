@@ -19,13 +19,38 @@
 </ul></b></nav>
 </header>
 <main>	
-		<!SEARCH BY RESTNAME/>
+		<!SEARCH BY LOCATION/>
+		<h1>Location Results:</h1>
+		
+		
+		<?php	// Receives user input and queries location by distance
+		
+				// Ensure database.php file is included
+				include_once 'database.php';
+				
+				// Jim's House
+				//$longitude = -75.27436937484953;
+				//$latitude = 43.065407611313546;
+				
+				// Charlton Hall
+				$longitude = -75.64124222090817;
+				$latitude = 42.89651475818489;
+				
+				// Max Search Radius (miles)
+				$distance = 20;
+	
+				$results = executeLocationQuery("SELECT * FROM location WHERE ST_Distance_Sphere(point(Longitude, Latitude),point(" . "'" . $longitude . "', '" . $latitude . "')) * .000621371192 < " . "'" . $distance ."'");
+		?>
+	
 		<h1>Search Results:</h1>
+		
+		<!SEARCH BY RESTNAME/>
+
 		
 		<?php	// Receives user input and queries restaurants by 'RestName'
 		
 				// Ensure database.php file is required
-				require 'database.php';
+				include_once 'database.php';
 				
 				// Checking if searchBar exists
 				if(isset($_GET["searchBar"])){
@@ -41,30 +66,13 @@
 					}
 				}
 		?>
-		
-		<!SEARCH BY ZIPCODE/>
-		
-		<?php	// Receives user input and queries restaurants by 'ZipCode'
-		
-				// Checking if searchBar exists
-				if(isset($_GET["searchBar"])){
-				
-					// Getting and storing value from search bar
-					$userInput = $_GET["searchBar"];
-				
-					// Input Validation: if search bar is not empty, and the input is 100% numeric, and the input has 5 numbers: execute query
-					if($userInput!= "" && is_numeric($userInput) && strlen($userInput) == 5){
-					
-						// Execute user input ZipCode query
-						$results = executeRestaurantQuery('SELECT * FROM restaurant WHERE ZipCode LIKE' . "'" . $userInput . "'");
-				}
-			}
-		?>
 
 		<!SEARCH BY CATEGORY/>
+
 		
 		<?php	// Receives user input and queries restaurants by 'CategoryID'
 		
+				include_once 'database.php';
 				
 				// Checking if searchBar exists
 				if(isset($_GET["searchBar"])){
@@ -106,13 +114,24 @@
 						case "italian":
 						$results = executeRestaurantQuery('SELECT * FROM restaurant WHERE CategoryID LIKE 8');
 						break;
+						
+						case "barbecue":
+						$results = executeRestaurantQuery('SELECT * FROM restaurant WHERE CategoryID LIKE 9');
+						break;
 					}
 				}
 		?>
 		
-		<!SEARCH BY Rating/>
+		<!SEARCH BY RATING/>
+
 		
-		<?php	// Recives user input and queries restaurants by 'Rating'
+		<?php	
+		
+				/*
+				
+				// Recives user input and queries restaurants by 'Rating'
+				
+				include_once 'database.php';
 		
 				// Checking if searchBar exists
 				if(isset($_GET["searchBar"])){
@@ -125,8 +144,10 @@
 					
 						// Execute user input Rating query
 						$results = executeRestaurantQuery('SELECT * FROM restaurant WHERE Rating LIKE' . "'" . $userInput . "'");
+					}
 				}
-			}
+			
+				*/
 		?>
 		
 	</main>

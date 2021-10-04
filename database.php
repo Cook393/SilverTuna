@@ -65,7 +65,7 @@ function executeRestaurantQuery($query){
 					"RestID: " . $row["RestID"] . "  " .
 					"RestName: " . $row["RestName"] .  "  " .
 					"CategoryID: " . $row["CategoryID"] . "  " .
-					"ZipCode: " . $row["ZipCode"] .  "  " .
+					"LocID: " . $row["LocID"] .  "  " .
 					"PricePoint: " . $row["PricePoint"] . "  " .
 					"Rating: " . $row["Rating"] . "<br>" );
 		}
@@ -138,9 +138,12 @@ function executeLocationQuery($query){
 		
 			// Format and display results
 			echo( 
+					"LocID: " . $row["LocID"] . "  " .
 					"ZipCode: " . $row["ZipCode"] . "  " .
 					"City: " . $row["City"] . "  " .
-					"State: " . $row["State"] . "<br>"  );
+					"State: " . $row["State"] .  "  " .
+					"Latitude: " . $row["Latitude"] . "  " .
+					"Longitude: " . $row["Longitude"] . "<br>"  );
 		}
 	}
 	else
@@ -154,4 +157,5 @@ function executeLocationQuery($query){
 	return $results;
 	}
 }
+
 ?>
