@@ -19,6 +19,13 @@
 </ul></b></nav>
 </header>
 <main>	
+
+<! The majority of these php sections should be refactored when we have user controls, just require databasecontroller.php and
+   use its functions for easy access to premade queries to obtain results for displaying any data you need.
+   You can also use the echo function to display/ test the result set before constructing a table (or other display). />
+
+		<p> *Change $searchRadius in search.php to alter Location Results*  </p>
+
 		<!SEARCH BY LOCATION/>
 		<h1>Location Results:</h1>
 		
@@ -26,31 +33,32 @@
 		<?php	// Receives user input and queries location by distance
 		
 				// Ensure database.php file is included
-				include_once 'database.php';
-				
-				// Jim's House
-				//$longitude = -75.27436937484953;
-				//$latitude = 43.065407611313546;
+				include_once 'databasecontroller.php';
 				
 				// Charlton Hall
 				$longitude = -75.64124222090817;
 				$latitude = 42.89651475818489;
 				
 				// Max Search Radius (miles)
-				$distance = 20;
-	
-				$results = executeLocationQuery("SELECT * FROM location WHERE ST_Distance_Sphere(point(Longitude, Latitude),point(" . "'" . $longitude . "', '" . $latitude . "')) * .000621371192 < " . "'" . $distance ."'");
+				$searchRadius = 0.1;
+				
+				$query = locationQueryBuilder($longitude, $latitude, $searchRadius);
+				
+				$results = executeLocationQuery($query);
+				
+				echoResults($results);
+				
 		?>
 	
 		<h1>Search Results:</h1>
+		
 		
 		<!SEARCH BY RESTNAME/>
 
 		
 		<?php	// Receives user input and queries restaurants by 'RestName'
 		
-				// Ensure database.php file is required
-				include_once 'database.php';
+				include_once 'databasecontroller.php';
 				
 				// Checking if searchBar exists
 				if(isset($_GET["searchBar"])){
@@ -62,17 +70,27 @@
 					if($userInput!= "" && !is_numeric($userInput)){ 
 				
 						// Execute user input RestName query
-						$results = executeRestaurantQuery('SELECT * FROM restaurant WHERE RestName LIKE' . "'%" . $userInput . "%'");
+						
+						$query = restNameQueryBuilder($userInput);
+						
+						$results = executeRestaurantQuery($query);
+						
+						echoResults($results);
 					}
 				}
 		?>
 
+
 		<!SEARCH BY CATEGORY/>
 
 		
-		<?php	// Receives user input and queries restaurants by 'CategoryID'
+		<?php	
 		
-				include_once 'database.php';
+				/*
+				
+				// Receives user input and queries restaurants by 'CategoryID'
+		
+				include_once 'databasecontroller.php';
 				
 				// Checking if searchBar exists
 				if(isset($_GET["searchBar"])){
@@ -118,21 +136,28 @@
 						case "barbecue":
 						$results = executeRestaurantQuery('SELECT * FROM restaurant WHERE CategoryID LIKE 9');
 						break;
+						
+						case "fast food":
+						$results = executeRestaurantQuery('SELECT * FROM restaurant WHERE CategoryID LIKE 10');
+						break;
 					}
 				}
+				
+				*/
 		?>
+		
 		
 		<!SEARCH BY RATING/>
 
 		
 		<?php	
-		
+
 				/*
 				
 				// Recives user input and queries restaurants by 'Rating'
 				
-				include_once 'database.php';
-		
+				include_once 'databasecontroller.php';
+				
 				// Checking if searchBar exists
 				if(isset($_GET["searchBar"])){
 				
@@ -146,9 +171,11 @@
 						$results = executeRestaurantQuery('SELECT * FROM restaurant WHERE Rating LIKE' . "'" . $userInput . "'");
 					}
 				}
-			
+				
 				*/
+
 		?>
+		
 		
 	</main>
     </body>
