@@ -6,6 +6,17 @@ header {
   height: 150px;
 }
 
+header p {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 80px;
+  left: 1500px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -37,23 +48,15 @@ nav li a:active{
   background-color: red;
 }
 
-body{
-	background-color: white;
-}
-
-main { 
-  padding-top: 1em;
-  padding-left: 5em;
-  padding-bottom: 1em;
-  display: block; 
-  color:black;
-  background-color: #688b9a; 
-  border-radius: 5px;
+main {
+  width: 98%;
+  margin: auto;
+  background-color: #688b9a;
 }
 
 footer {
   font-style: italic;
-  text-align: right;
+  text-align: center;
 }
 
 .option-header {
@@ -67,25 +70,46 @@ footer {
 }
 
 .form-style-1 {
-  width: 326px;
+  width: 228px;
   background-color: white;
-  display: block; 
-  color:black;
+  display: block;
+  color: black;
   border-color: black;
   border: 1px solid;
-  padding: 10px;
+  padding: 6px;
   box-shadow: 1px 1px inset;
   border-radius: 5px;
 }
 
-.form-style-2 {
-  width: 150px;
-  background-color: white;
-  display: block; 
-  color:black;
-  border-color: black;
+.mainDiv {
+  width: 95%;
+}
+
+.searchDiv{
+  width: 15%;
+  color: black;
+  margin: auto;
+  float: left;
+  padding: 40px;
+  overflow: hidden;
+}
+
+.resultsDiv {
+  width: 72%;
+  padding-left: 0px;
+  padding-right: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  float: right;
+}
+
+.results {
   border: 1px solid;
-  padding: 10px;
+  boarder-color: black;
   box-shadow: 1px 1px inset;
   border-radius: 5px;
+  color: black;
+  width: 1000px;
+  padding: 20px;
+
 }
