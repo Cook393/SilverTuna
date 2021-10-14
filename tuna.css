@@ -103,13 +103,14 @@ footer {
   float: right;
 }
 
-.results {
-  border: 1px solid;
-  boarder-color: black;
-  box-shadow: 1px 1px inset;
-  border-radius: 5px;
-  color: black;
-  width: 1000px;
-  padding: 20px;
 
+table, th, td {
+  padding: 0.5em;
+  border-width: 1px;
+
+  border-style: solid;
+  border-color: #5b7444;
 }
+
+tr:nth-of-type(even) { background-color: #ffcc33; }
+tr:nth-of-type(odd) { background-color: #fcf1d1; }

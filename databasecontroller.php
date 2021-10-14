@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="tuna.css"></link>
+<link rel="shortcut icon" href="logo.jpg">
+<title>Silver Tuna</title>
+<meta charset="utf-8">
+</head>
+
 <?php
 
 //CONNECTION DATA
@@ -5,8 +14,6 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "silvertuna";
-
-
 
 //CONNECTION FUNCTIONS
 
@@ -47,9 +54,6 @@ function testConnection($connection){
 }
 
 
-
-
-
 //EXECUTE QUERY
 
 // accepts parameter(query) and returns results
@@ -76,9 +80,6 @@ function executeQuery($query){
 }
 
 
-
-
-
 //QUERY BUILDER FUNCTIONS
 
 // accepts 3 parameters(Longitude, Latitude, searchRadius) & returns a string query on the 'location' table for restaurants within the defined search radius
@@ -98,69 +99,6 @@ function searchRadiusQuery($longitude, $latitude, $radius){
 												 
 	return $query;
 }			
-
-// accepts parameter(RestName) and returns a query on the 'restaurant' table based on the RestName
-function restNameQuery($restName){ 
-	
-	$query = 	"SELECT 
-				rest.RestID, rest.RestName, rest.CategoryID, rest.LocID, rest.PricePoint, rest.Rating, rest.PhoneNumber, rest.URL,
-				loc.ZipCode, loc.Address, loc.City, loc.State, loc.Latitude, loc.Longitude,
-				cat.Category
-				FROM restaurant rest
-			    RIGHT JOIN location loc ON rest.LocID = loc.LocID
-				RIGHT JOIN category cat ON rest.CategoryID = cat.CategoryID
-				WHERE rest.RestName LIKE" . "'%" . $restName . "%'";
-										
-	return $query;
-}									     
-
-// accepts parameter(Price Point Range) and returns a query on the 'restaurant' table based on the PricePoint range
-function pricePointQuery($num1, $num2){
-	
-	$query = 	"SELECT
-				rest.RestID, rest.RestName, rest.CategoryID, rest.LocID, rest.PricePoint, rest.Rating, rest.PhoneNumber, rest.URL,
-				loc.ZipCode, loc.Address, loc.City, loc.State, loc.Latitude, loc.Longitude,
-				cat.Category
-				FROM restaurant rest
-			    RIGHT JOIN location loc ON rest.LocID = loc.LocID
-				RIGHT JOIN category cat ON rest.CategoryID = cat.CategoryID
-				WHERE rest.PricePoint BETWEEN " . $num1 . " AND " . $num2;
-										
-	return $query;
-}
-
-// accepts parameter(Category) and returns a query on the 'category' table based on the Category
-function categoryQuery($category){ 
-
-	$query = 	"SELECT
-				rest.RestID, rest.RestName, rest.CategoryID, rest.LocID, rest.PricePoint, rest.Rating, rest.PhoneNumber, rest.URL,
-				loc.ZipCode, loc.Address, loc.City, loc.State, loc.Latitude, loc.Longitude,
-				cat.Category
-				FROM category cat
-				LEFT JOIN restaurant rest ON cat.CategoryID = rest.CategoryID
-				RIGHT JOIN location loc ON rest.LocID = loc.LocID
-				WHERE cat.Category= " . "'" . $category . "'";
-												 
-	return $query;
-}
-
-// accepts parameter(Rating) and returns a query on the 'restaurant' table based on the Rating
-function ratingQuery($rating){  
-
-	$query = 	"SELECT
-				rest.RestID, rest.RestName, rest.CategoryID, rest.LocID, rest.PricePoint, rest.Rating, rest.PhoneNumber, rest.URL,
-				loc.ZipCode, loc.Address, loc.City, loc.State, loc.Latitude, loc.Longitude,
-				cat.Category
-				FROM restaurant rest
-			    RIGHT JOIN location loc ON rest.LocID = loc.LocID
-				RIGHT JOIN category cat ON rest.CategoryID = cat.CategoryID
-				WHERE rest.Rating >=" . $rating;
-										
-	return $query;
-}
-
-
-
 
 
 //QUERY APPEND FUNCTIONS
@@ -201,13 +139,11 @@ function andRating($rating){
 }
 
 // order by portion of query
-function orderByRestName(){
+function orderBy(){
 	
 	$query = " Order By RestName";
 	return $query;
 }
-
-
 
 
 //DISPLAY FUNCTIONS
@@ -222,20 +158,20 @@ function displayFormattedResults($results){
 		while($row = mysqli_fetch_assoc($results)){
 					
 			// Format and display results
-			echo( 
-					"<h2>" . $row["RestName"] . "</h2>" .
-					
-					"Phone: " . $row["PhoneNumber"] . "<br>" .
-					
-					"Website: " . $row["URL"] . "<br>" .
-					
-					"Address: " . $row["Address"] . ",  " . $row["City"] . ",  " . $row["State"] . " " . $row["ZipCode"] . "<br>" .
-
-					"Category: " . $row["Category"] . "<br>" . 
-					
-					"PricePoint: " . $row["PricePoint"] . "<br>" .
-
-					"Rating: " . $row["Rating"] . "<br>"
+			echo(
+				"<table border=\"1\" bgcolor=\"white\">
+				<tr><td rowspan=\"3\"><img src=\"logo2.jpg\"></img></td>
+				<td><h2>" . $row["RestName"] . "</h2></td>" .
+				"<td><b> Rating:</b> " . $row["Rating"] . " Stars</td</tr>
+				<tr>" .
+				"<td><b> Category:</b> " . $row["Category"] . "</td>" .
+				"<td><b> Average Dish Price:</b> " . $row["PricePoint"] . "</td></tr>
+				<tr>" .
+				"<td><b> Address:</b> " . $row["Address"] . ", " . $row["City"] . ", " . $row["State"] . " " . $row["ZipCode"] . "</td>" .
+				"<td><a href=". $row["URL"] .">Website Link</a><br><b> Phone Number:</b> ". $row["PhoneNumber"] . "</td>
+				</tr>
+				</table>
+				<br>"
 				);
 			}
 		}
@@ -244,5 +180,6 @@ function displayFormattedResults($results){
 		echo ("No results found.. <br>"); 
 	}
 }
-
 ?>
+
+</html>

@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<link rel="stylesheet" type="text/css" href="tuna.css">
 	<link rel="shortcut icon" href="logo2.jpg">
 	<title>Silver Tuna</title>
 	<meta charset="utf-8">
 </head>
-
 <header>
-
 	<nav><ul>
 		<li><a class="active" href="home.php">Home</a></li>
 		<li><a href="contact.html">Contact</a></li>
@@ -17,15 +14,10 @@
 		</ul>
 	</nav>
 		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
-		
 </header>
-
 <main>
-
 <div class = "mainDiv">
-
 	<div class = "searchDiv">
-
 		<form class="form-style-1" style ="" action="home.php" method="POST">
 			<i>Search by Restaurant Name:</i>
 			<input type="text" name="searchBar" placeholder="Search..." size='27'>
@@ -70,14 +62,10 @@
 			<br>
 			<button class ="form-style-1" type="input" name="submit"> Submit </button>	
 		</form>
-		
 	</div>
-	
 	<div style="clear: right"> </div>
-	
 	<div class="resultsDiv">
-
-		<form class ="results" action="home.php" method="POST">
+		<form action="home.php" method="POST">
 		
 		<?php
 			require_once 'databasecontroller.php';
@@ -125,7 +113,6 @@
 
 						if($i == 0){ $resultQuery = $resultQuery . andCategory($value); }
 						else if($i > 0 && $i < $length) { $resultQuery = $resultQuery . orCategory($value); }
-						
 						$i++;
 					}
 				    
@@ -142,7 +129,6 @@
 						
 						$num1 = $data[0];
 						$num2 = $data[1];
-					
 						$resultQuery = $resultQuery . andPricePoint($num1, $num2);
 					}
 				}
@@ -151,37 +137,25 @@
 				if(!empty($_POST['rating'])) {
 					
 					$rating = $_POST['rating'];
-					$ratingQuery = ratingQuery($rating);
 					$resultQuery = $resultQuery . andRating($rating);
 				}
 				
-				$resultQuery = $resultQuery . orderByRestName();
+				$resultQuery = $resultQuery . orderBy();
 				
 				// storing result query and displaying the results
 				$results = executeQuery($resultQuery);
 				displayFormattedResults($results);
-				
-				
-				echo("<br>" . $resultQuery);
 			}
 		?>
 		
 		</form>
-		
 	</div>
-
 </div>
-
 <div style="clear: both"> </div>
-
 </main>
-
 <footer>
-
 	<small>Copyright &copy; 2021 Silver Tuna
 		<br><a href="mailto:browne737@morrisville.edu">Email Us</a>
 	</small>
-	
 </footer>
-
 </html>
