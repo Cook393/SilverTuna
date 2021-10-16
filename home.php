@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang = "en" lang="en" >
+<?php require_once 'searchEngine.php'; ?>
+    <head>
 	<link rel="stylesheet" type="text/css" href="tuna.css">
 	<link rel="shortcut icon" href="logo2.jpg">
 	<title>Silver Tuna</title>
@@ -19,136 +20,43 @@
 <div class = "mainDiv">
 	<div class = "searchDiv">
 		<form class="form-style-1" style ="" action="home.php" method="POST">
-			<i>Search by Restaurant Name:</i>
+			<h4>Search by Restaurant Name:</h4>
 			<input type="text" name="searchBar" placeholder="Search..." size='27'>
 			<br>
+			<h4>Your Location:</h4>
+			<label>Chenango St, Morrisville, NY 13408</label>
 			<br>
-			<i>Your Location:</i>
-			<input type="text" name="locationBar" placeholder="Chenango St, Morrisville, NY 13408" size='27'>
+			<h4>Filter by Search Radius:</h4>
+			<input type="radio" name="radius[]" value="1"  checked  <?php if(!empty($_POST['radius']) && in_array("1", $_POST['radius'])) echo 'checked="checked"';  ?>> Within 1 Mile   <br>
+			<input type="radio" name="radius[]" value="10" 		    <?php if(!empty($_POST['radius']) && in_array("10", $_POST['radius'])) echo 'checked="checked"'; ?>> Within 10 Miles <br>
+			<input type="radio" name="radius[]" value="20" 		    <?php if(!empty($_POST['radius']) && in_array("20", $_POST['radius'])) echo 'checked="checked"'; ?>> Within 20 Miles <br>
+			<input type="radio" name="radius[]" value="30" 	        <?php if(!empty($_POST['radius']) && in_array("30", $_POST['radius'])) echo 'checked="checked"'; ?>> Within 30 Miles <br>
+			<input type="radio" name="radius[]" value="40" 		    <?php if(!empty($_POST['radius']) && in_array("40", $_POST['radius'])) echo 'checked="checked"'; ?>> Within 40 Miles <br>
+			<h4>Filter by Category:</h4>
+			<input type="checkbox" name="category[]" value="Bar & Grill"  <?php if(!empty($_POST['category']) && in_array("Bar & Grill", $_POST['category'])) echo 'checked="checked"'; ?> > Bar & Grill <br>
+			<input type="checkbox" name="category[]" value="Chinese"	  <?php if(!empty($_POST['category']) && in_array("Chinese", $_POST['category']))  	  echo 'checked="checked"'; ?> > Chinese     <br>
+			<input type="checkbox" name="category[]" value="Desserts" 	  <?php if(!empty($_POST['category']) && in_array("Desserts", $_POST['category'])) 	  echo 'checked="checked"'; ?> > Dessert     <br>
+			<input type="checkbox" name="category[]" value="Diner" 		  <?php if(!empty($_POST['category']) && in_array("Diner", $_POST['category']))  	  echo 'checked="checked"'; ?> > Diner       <br>
+			<input type="checkbox" name="category[]" value="Indian"	      <?php if(!empty($_POST['category']) && in_array("Indian", $_POST['category']))  	  echo 'checked="checked"'; ?> > Indian      <br>
+			<input type="checkbox" name="category[]" value="Italian" 	  <?php if(!empty($_POST['category']) && in_array("Italian", $_POST['category'])) 	  echo 'checked="checked"'; ?> > Italian     <br>
+			<input type="checkbox" name="category[]" value="Mexican" 	  <?php if(!empty($_POST['category']) && in_array("Mexican", $_POST['category'])) 	  echo 'checked="checked"'; ?> > Mexican     <br>
+			<input type="checkbox" name="category[]" value="Seafood" 	  <?php if(!empty($_POST['category']) && in_array("Seafood", $_POST['category'])) 	  echo 'checked="checked"'; ?> > Seafood     <br>
+			<h4>Filter by Price Range:</h4>
+			Min $<input type="text" name="min" size="3" />
+			Max $<input type="text" name="max" size="3" />
+			<h4>Filter by Star Rating:</h4>
+			<input type="checkbox" name="rating[]" value="1"  <?php if(!empty($_POST['rating']) && in_array("1", $_POST['rating'])) echo 'checked="checked"'; ?> > 1 & Up <br>
+			<input type="checkbox" name="rating[]" value="2"  <?php if(!empty($_POST['rating']) && in_array("2", $_POST['rating'])) echo 'checked="checked"'; ?> > 2 & Up <br>
+			<input type="checkbox" name="rating[]" value="3"  <?php if(!empty($_POST['rating']) && in_array("3", $_POST['rating'])) echo 'checked="checked"'; ?> > 3 & Up <br>
+			<input type="checkbox" name="rating[]" value="4"  <?php if(!empty($_POST['rating']) && in_array("4", $_POST['rating'])) echo 'checked="checked"'; ?> > 4 & Up <br>
 			<br>
-			<br>
-			<i>Filter by Search Radius:</i><br>
-			<input type="radio" name="radius" value="1" checked>Within 1 Mile<br>
-			<input type="radio" name="radius" value="10">Within 10 Miles<br>
-			<input type="radio" name="radius" value="20">Within 20 Miles<br>
-			<input type="radio" name="radius" value="30">Within 30 Miles<br>
-			<input type="radio" name="radius" value="40">Within 40 Miles<br>
-			<br>
-			<i>Filter by Category:</i><br>
-			<input type="checkbox" name="category[]" value="Bar & Grill">Bar & Grill<br>
-			<input type="checkbox" name="category[]" value="Chinese">Chinese<br>
-			<input type="checkbox" name="category[]" value="Desserts">Dessert<br>
-			<input type="checkbox" name="category[]" value="Diner">Diner<br>
-			<input type="checkbox" name="category[]" value="Indian">Indian<br>
-			<input type="checkbox" name="category[]" value="Italian">Italian<br>
-			<input type="checkbox" name="category[]" value="Mexican">Mexican<br>
-			<input type="checkbox" name="category[]" value="Seafood">Seafood<br>
-			<br>
-			<i>Filter by Price Point:</i><br>
-			<input type="radio" name="pricePoint" value="0,50" checked>$0-$50<br>
-			<input type="radio" name="pricePoint" value="5,10">$5-$10<br>
-			<input type="radio" name="pricePoint" value="10,15">$10-$15<br>
-			<input type="radio" name="pricePoint" value="15,20">$15-$20<br>
-			<input type="radio" name="pricePoint" value="25,30">$25-$30<br>
-			<input type="radio" name="pricePoint" value="30,35">$30-$35<br>
-			<input type="radio" name="pricePoint" value="35,40">$35-$40<br>
-			<br>
-			<i>Filter by Star Rating:</i><br>
-			<input type="radio" name="rating" value="1" checked>1 Star & Up<br>
-			<input type="radio" name="rating" value="2">2 Star & Up<br>
-			<input type="radio" name="rating" value="3">3 Star & Up<br>
-			<input type="radio" name="rating" value="4">4 Star & Up<br>
-			<input type="radio" name="rating" value="5">5 Stars<br>
-			<br>
-			<button class ="form-style-1" type="input" name="submit"> Submit </button>	
+			<button class ="form-style-1" type="input" name="submit"> Submit </button>
+			<?php $results = getSearchResults(); ?>
 		</form>
 	</div>
 	<div style="clear: right"> </div>
 	<div class="resultsDiv">
-		<form action="home.php" method="POST">
-		
-		<?php
-			require_once 'databasecontroller.php';
-			
-			//Location Data (Charelton Hall)
-			$longitude = -75.64124222090817;
-			$latitude = 42.89651475818489;
-			
-			//User Input Data
-			$radius = 0;
-			$restName = "";
-			$category = "";
-			$pricePoint = "";
-			$rating = 6;
-			
-			//Result Query
-			$resultQuery = "";
-
-			// checking to see if certain controls exist, if they do create and append query based on user selection
-			if(isset($_POST['submit'])){
-				
-				// checking to see if Radius has a value
-				if(!empty($_POST['radius'])) { 
-					
-					$radius = $_POST['radius'];
-					$locationQuery = searchRadiusQuery($longitude, $latitude, $radius);
-					$resultQuery = $locationQuery;
-				}
-				
-				// checking to see if searchBar has a value
-				if(!empty($_POST['searchBar'])) { 
-					
-					$restName = $_POST['searchBar'];
-					$resultQuery = $resultQuery . andRestName($restName);
-				}
-				
-				// checking to see if Category has a value
-				if(!empty($_POST['category'])) { 				
-					
-					$cat = $_POST['category'];
-					$length = count($cat);
-					$i = 0;
-					
-					foreach($cat as $value){
-
-						if($i == 0){ $resultQuery = $resultQuery . andCategory($value); }
-						else if($i > 0 && $i < $length) { $resultQuery = $resultQuery . orCategory($value); }
-						$i++;
-					}
-				    
-					$resultQuery = $resultQuery . ") ";
-				}
-					
-				// checking to see if PricePoint has a value
-				if(!empty($_POST['pricePoint'])) {
-
-					$pricePoint = $_POST['pricePoint'];
-					$data = explode("," , $pricePoint);
-					
-					if(isset($data)){
-						
-						$num1 = $data[0];
-						$num2 = $data[1];
-						$resultQuery = $resultQuery . andPricePoint($num1, $num2);
-					}
-				}
-				
-				// checking to see if Rating has a value
-				if(!empty($_POST['rating'])) {
-					
-					$rating = $_POST['rating'];
-					$resultQuery = $resultQuery . andRating($rating);
-				}
-				
-				$resultQuery = $resultQuery . orderBy();
-				
-				// storing result query and displaying the results
-				$results = executeQuery($resultQuery);
-				displayFormattedResults($results);
-			}
-		?>
-		
-		</form>
+		<form action="home.php" method="POST"> <?php displayResults($results); ?> </form>
 	</div>
 </div>
 <div style="clear: both"> </div>
