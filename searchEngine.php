@@ -14,6 +14,9 @@ $category = "";
 $rating = "";
 $min = "";
 $max = "";
+$query = "";
+$results = [];
+
 
 
 
@@ -39,7 +42,8 @@ function getQuery($longitude, $latitude, $radius){
 
 
 
-//QUERY WHERE CLAUSE APPEND FUNCTIONS
+
+//APPEND QUERY BUILDERS
 
 // LIKE %$restName%
 function andRestName($restName){
@@ -85,97 +89,153 @@ function orderBy($columnName){
 
 
 
+
+//APPEND QUERY BY USER INPUT
+
+// append query based on radius user entered
+function radiusAppend(){
+	
+	global $query;
+	global $radius;
+	global $longitude;
+	global $latitude;
+	
+	// checking to see if Radius has a value
+	if(!empty($_POST['radius'])) { 
+					
+		$radius = $_POST['radius'];
+			
+		foreach($radius as $value){
+
+			if($value != "") {	
+					
+				$tempQuery = getQuery($longitude, $latitude, $value);
+				$query = $tempQuery; 
+			}
+		}
+	}
+}
+
+// append query based on restName user entered
+function restNameAppend(){
+	
+	global $query;
+	global $restName;
+	
+	// checking to see if searchBar has a value
+	if(!empty($_POST['searchBar'])) { 
+			
+		$restName = $_POST['searchBar'];
+		$query = $query . andRestName($restName);
+	}
+}
+
+// append query based on categorys user entered
+function categoryAppend(){
+	
+	global $query;
+	global $category;
+	
+	// checking to see if Category has a value
+	if(!empty($_POST['category'])) { 				
+					
+		$category = $_POST['category'];
+		$length = count($category);
+		$i = 0;
+					
+		foreach($category as $value){
+
+			if($i == 0){ $query = $query . andCategory($value); }
+			else if($i > 0 && $i < $length) { $query = $query . orCategory($value); }
+			$i++;
+		}
+			
+		$query = $query . ") ";
+	}
+}
+
+// append query based on price range user entered
+function pricePointAppend(){
+	
+	global $query;
+	global $min;
+	global $max;
+	
+	
+	if(!empty($_POST['min']) && !empty($_POST['max'])) {
+			
+		if(is_numeric($_POST['min']) && is_numeric($_POST['max'])){
+				
+			$min = $_POST['min'];
+			$max = $_POST['max'];
+				
+			$query = $query . betweenPricePoints($min, $max);
+		}
+	}
+}
+
+// append query based on rating user entered
+function ratingAppend(){
+	
+	global $query;
+	global $rating;
+	
+	// checking to see if Rating has a value
+	if(!empty($_POST['rating'])) {
+			
+		$i = 1;
+		$rating = $_POST['rating'];
+			
+		foreach($rating as $value){
+
+			if($value != ""){ $query = $query . andRating($value); }
+			$i++;
+		}
+	}
+}
+
+// append query to order the results
+function orderingAppend(){
+	
+	global $query;
+	
+	// ordering query
+	$query = $query . orderBy("RestName");
+}
+
+
+
+
 //SEARCH FUNCTIONS
 
 // performs a search on the database based on the user's input, returns search result array
-function getSearchResults(){
+function searchResults(){
 	
-	require_once 'searchEngine.php';
-	
-	global $longitude;
-	global $latitude;
-	global $radius;
-	global $restName;
-	global $category;
-	global $rating;
-	global $min;
-	global $max;
-
-	$query = "";
-	$results = [];
+	global $query;
+	global $results;
 
 	// checking to see if certain controls exist, if they do create and append query based on user selection
 	if(isset($_POST['submit'])){
-				
-		// checking to see if Radius has a value
-		if(!empty($_POST['radius'])) { 
-					
-			$radius = $_POST['radius'];
 			
-			foreach($radius as $value){
+		radiusAppend();
+		restNameAppend();
+		categoryAppend();	
+		pricePointAppend();
+		ratingAppend();
 
-				if($value != "") {	
-					
-					$tempQuery = getQuery($longitude, $latitude, $value);
-					$query = $tempQuery; 
-				}
-			}
-		}
-				
-		// checking to see if searchBar has a value
-		if(!empty($_POST['searchBar'])) { 
-					
-			$restName = $_POST['searchBar'];
-			$query = $query . andRestName($restName);
-		}
-				
-		// checking to see if Category has a value
-		if(!empty($_POST['category'])) { 				
-					
-			$category = $_POST['category'];
-			$length = count($category);
-			$i = 0;
-					
-			foreach($category as $value){
-
-				if($i == 0){ $query = $query . andCategory($value); }
-				else if($i > 0 && $i < $length) { $query = $query . orCategory($value); }
-				$i++;
-			}
-			
-			$query = $query . ") ";
-		}
-			
-		if(($_POST['min'] != "") && ($_POST['max'] != "")) {
-			
-			if(is_numeric($_POST['min']))$min = $_POST['min'];
-			if(is_numeric($_POST['max']))$max = $_POST['max'];
-			
-			$query = $query . betweenPricePoints($min, $max);
-		}
-
-		// checking to see if Rating has a value
-		if(!empty($_POST['rating'])) {
-			
-			$i = 1;
-			$rating = $_POST['rating'];
-			
-			foreach($rating as $value){
-
-				if($value != ""){ $query = $query . andRating($value); }
-				$i++;
-			}
-		}
-		
-		// ordering query
-		$query = $query . orderBy("RestName");
-		
 		// executing query and displaying results
 		$results = executeQuery($query);
 		
 		return $results;
 	}
 }
+
+
+function checkInput($name, $value){
+	
+	if(!empty($_POST[$name]) && in_array($value, $_POST[$name])) echo 'checked="checked"';
+}
+
 
 
 
