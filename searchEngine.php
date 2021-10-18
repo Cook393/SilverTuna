@@ -8,7 +8,7 @@ $longitude = -75.64124222090817;
 $latitude = 42.89651475818489;
 
 // query data
-$radius = "";
+$radius = 1;
 $restName = "";
 $category = "";
 $rating = "";
