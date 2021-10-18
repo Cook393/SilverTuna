@@ -104,15 +104,9 @@ function radiusAppend(){
 	if(!empty($_POST['radius'])) { 
 					
 		$radius = $_POST['radius'];
-			
-		foreach($radius as $value){
-
-			if($value != "") {	
-					
-				$tempQuery = getQuery($longitude, $latitude, $value);
-				$query = $tempQuery; 
-			}
-		}
+						
+		$tempQuery = getQuery($longitude, $latitude, $radius);
+		$query = $tempQuery;
 	}
 }
 
@@ -273,6 +267,7 @@ function displayResults($results){
 				);
 			}
 		}
+		else{ echo "No results found..."; }
 	}
 }
 

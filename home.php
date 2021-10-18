@@ -26,11 +26,8 @@
 			<h4>Your Location:</h4>
 			<label>Chenango St, Morrisville, NY 13408</label>
 			<h4>Filter by Search Radius:</h4>
-			<input type="radio" name="radius[]" value="1"  checked  <?php checkInput("radius", "1");  ?> > Within 1 Mile   <br>
-			<input type="radio" name="radius[]" value="10" 		    <?php checkInput("radius", "10"); ?> > Within 10 Miles <br>
-			<input type="radio" name="radius[]" value="20" 		    <?php checkInput("radius", "20"); ?> > Within 20 Miles <br>
-			<input type="radio" name="radius[]" value="30" 	        <?php checkInput("radius", "30"); ?> > Within 30 Miles <br>
-			<input type="radio" name="radius[]" value="40" 		    <?php checkInput("radius", "40"); ?> > Within 40 Miles <br>
+			<input type="range" name="radius" min="1" max="120" value="<?php echo $radius; ?>" oninput="this.form.inputRadius.value=this.value" /><br><br>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="number" name="inputRadius" min="1" max="120" value="<?php echo $radius; ?>" oninput="this.form.radius.value=this.value" /> Miles
 			<h4>Filter by Category:</h4>
 			<input type="checkbox" name="category[]" value="Bar & Grill"  <?php checkInput("category", "Bar & Grill"); ?> > Bar & Grill <br>
 			<input type="checkbox" name="category[]" value="Chinese"	  <?php checkInput("category", "Chinese");     ?> > Chinese     <br>
@@ -41,8 +38,8 @@
 			<input type="checkbox" name="category[]" value="Mexican" 	  <?php checkInput("category", "Mexican"); 	   ?> > Mexican     <br>
 			<input type="checkbox" name="category[]" value="Seafood" 	  <?php checkInput("category", "Seafood"); 	   ?> > Seafood     <br>
 			<h4>Filter by Price Range:</h4>
-			<input type="text" name="min" size="3" placeholder = "$ Min" value = "<?php echo $min; ?>" /> <b>-</b>
-			<input type="text" name="max" size="3" placeholder = "$ Max" value = "<?php echo $max; ?>" />
+			$<input type="number" name="min" size="2" min="0" max="998" placeholder = "Min" value = "<?php echo $min; ?>" /> -
+			$<input type="number" name="max" size="2" min="1" max="999" placeholder = "Max" value = "<?php echo $max; ?>" />
 			<h4>Filter by Star Rating:</h4>
 			<input type="radio" name="rating[]" value="1"  <?php checkInput("rating", "1"); ?> > 1 & Up <br>
 			<input type="radio" name="rating[]" value="2"  <?php checkInput("rating", "2"); ?> > 2 & Up <br>
