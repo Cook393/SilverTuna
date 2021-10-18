@@ -12,8 +12,8 @@ $radius = 1;
 $restName = "";
 $category = "";
 $rating = "";
-$min = "";
-$max = "";
+$min ="";
+$max ="";
 $query = "";
 $results = [];
 
@@ -155,18 +155,15 @@ function pricePointAppend(){
 	global $min;
 	global $max;
 	
-	
-	if(!empty($_POST['min']) && !empty($_POST['max'])) {
+	if(is_numeric($_POST['min']) && is_numeric($_POST['max'])){
 			
-		if(is_numeric($_POST['min']) && is_numeric($_POST['max'])){
+		$min = $_POST['min'];
+		$max = $_POST['max'];
 				
-			$min = $_POST['min'];
-			$max = $_POST['max'];
-				
-			$query = $query . betweenPricePoints($min, $max);
-		}
+		$query = $query . betweenPricePoints($min, $max);
 	}
 }
+
 
 // append query based on rating user entered
 function ratingAppend(){

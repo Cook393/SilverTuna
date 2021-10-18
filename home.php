@@ -38,8 +38,8 @@
 			<input type="checkbox" name="category[]" value="Mexican" 	  <?php checkInput("category", "Mexican"); 	   ?> > Mexican     <br>
 			<input type="checkbox" name="category[]" value="Seafood" 	  <?php checkInput("category", "Seafood"); 	   ?> > Seafood     <br>
 			<h4>Filter by Price Range:</h4>
-			$<input type="number" name="min" size="2" min="0" max="998" placeholder = "Min" value = "<?php echo $min; ?>" /> -
-			$<input type="number" name="max" size="2" min="1" max="999" placeholder = "Max" value = "<?php echo $max; ?>" />
+			$<input type="number" name="min" size="3" min="0" max="999" placeholder = "Min" value = "<?php echo $min; ?>" /> -
+			$<input type="number" name="max" size="3" min="0" max="999" placeholder = "Max" value = "<?php echo $max; ?>" />
 			<h4>Filter by Star Rating:</h4>
 			<input type="radio" name="rating[]" value="1"  <?php checkInput("rating", "1"); ?> > 1 & Up <br>
 			<input type="radio" name="rating[]" value="2"  <?php checkInput("rating", "2"); ?> > 2 & Up <br>
