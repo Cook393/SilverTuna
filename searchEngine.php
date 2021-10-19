@@ -213,6 +213,7 @@ function searchResults(){
 		categoryAppend();	
 		pricePointAppend();
 		ratingAppend();
+		orderingAppend();
 
 		// executing query and displaying results
 		$results = executeQuery($query);
@@ -267,5 +268,4 @@ function displayResults($results){
 		else{ echo "No results found..."; }
 	}
 }
-
 ?>

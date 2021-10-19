@@ -41,10 +41,10 @@
 			$<input type="number" name="min" size="3" min="0" max="999" placeholder = "Min" value = "<?php echo $min; ?>" /> -
 			$<input type="number" name="max" size="3" min="0" max="999" placeholder = "Max" value = "<?php echo $max; ?>" />
 			<h4>Filter by Star Rating:</h4>
-			<input type="radio" name="rating[]" value="1"  <?php checkInput("rating", "1"); ?> > 1 & Up <br>
-			<input type="radio" name="rating[]" value="2"  <?php checkInput("rating", "2"); ?> > 2 & Up <br>
-			<input type="radio" name="rating[]" value="3"  <?php checkInput("rating", "3"); ?> > 3 & Up <br>
-			<input type="radio" name="rating[]" value="4"  <?php checkInput("rating", "4"); ?> > 4 & Up <br>
+			<input type="radio" name="rating[]" value="1" checked <?php checkInput("rating", "1"); ?> > 1 & Up <br>
+			<input type="radio" name="rating[]" value="2"  		  <?php checkInput("rating", "2"); ?> > 2 & Up <br>
+			<input type="radio" name="rating[]" value="3"  	  	  <?php checkInput("rating", "3"); ?> > 3 & Up <br>
+			<input type="radio" name="rating[]" value="4"  		  <?php checkInput("rating", "4"); ?> > 4 & Up <br>
 			<br>
 			<button class ="form-style-1" type="input" name="submit"> Submit </button>
 		</form>

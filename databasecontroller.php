@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="tuna.css"></link>
-<link rel="shortcut icon" href="logo.jpg">
-<title>Silver Tuna</title>
-<meta charset="utf-8">
-</head>
-
 <?php
 
 //CONNECTION DATA
@@ -77,4 +68,3 @@ function executeQuery($query){
 	}
 }
 ?>
-</html>
