@@ -53,8 +53,10 @@
 	<div class="resultsDiv">
 		<form action="home.php" method="POST"> <?php displayResults($results); ?> </form>
 	</div>
+
 </div>
 <div style="clear: both"> </div>
+
 </main>
 <footer>
 	<small>Copyright &copy; 2021 Silver Tuna

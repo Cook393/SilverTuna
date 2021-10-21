@@ -18,8 +18,6 @@ $query = "";
 $results = [];
 
 
-
-
 //QUERY BUILDER FUNCTIONS
 
 // accepts 3 parameters(Longitude, Latitude, searchRadius) & returns a string query on the 'location' table for restaurants within the defined search radius
@@ -263,7 +261,19 @@ function displayResults($results){
 					</table>
 					<br>"
 				);
+
 			}
+
+			echo(
+				"<div class=\"eliminationDiv\">
+				<a href=\"elimination.php\" target=\"_blank\">
+				Want to narrow down your search results? 
+				Try it out!
+				</a>
+				</div>"
+			);
+
+
 		}
 		else{ echo "No results found..."; }
 	}

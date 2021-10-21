@@ -81,6 +81,22 @@ footer {
   border-radius: 5px;
 }
 
+.eliminationDiv {
+  position:fixed;
+  float: right;
+  top: 200px;
+  right: 300px;
+  width: 228px;
+  background-color: white;
+  display: block;
+  color: black;
+  border-color: black;
+  border: 1px solid;
+  padding: 6px;
+  box-shadow: 1px 1px inset;
+  border-radius: 5px;
+}
+
 .mainDiv {
   width: 95%;
 }
@@ -114,3 +130,4 @@ table, th, td {
 
 tr:nth-of-type(even) { background-color: #ffcc33; }
 tr:nth-of-type(odd) { background-color: #fcf1d1; }
+
