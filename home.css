@@ -1,0 +1,135 @@
+header { 
+  background-color: white; 
+  background-image: url(logo2.jpg);
+  background-repeat: no-repeat;
+  background-position: left;
+  height: 150px;
+}
+
+header p {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 80px;
+  left: 1500px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 80px;
+  left: 250px;
+  overflow: hidden;
+  background-color: lightblue;
+  border-radius: 5px;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: darkblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: white;
+}
+nav li a:active{
+  background-color: red;
+}
+
+main {
+  margin: auto;
+  background-color: #688b9a;
+}
+
+footer {
+  font-style: italic;
+  text-align: center;
+}
+
+.option-header {
+  display: block;
+  color: black;
+  text-align: left;
+}
+
+.active{
+  background-color: lightgreen;
+}
+
+.form-style-1 {
+  background-color: white;
+  color: black;
+  border-color: black;
+  box-sizing: border-box;
+  border: 1px solid;
+  padding: 5px;
+  box-shadow: 1px 1px inset;
+  border-radius: 1px;
+  height: 70%;
+}
+
+.submit {
+  width: 100%;
+  height: 20px;
+}
+
+.wrapper {
+  width: 80%;
+}
+
+.left {
+  width: 13%;
+  color: black;
+  margin: auto;
+  float: left;
+  padding: 6px;
+  overflow: hidden;
+}
+
+.right {
+  width: 62%;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 100px;
+  float: left;
+}
+
+table{ 
+    width: 100%;
+    background-color: black;
+}
+th, td{
+    width: 25%;
+    border: black solid 1px;
+}
+
+tr:nth-of-type(even) { background-color: #ffcc33; }
+tr:nth-of-type(odd) { background-color: #fcf1d1; }
+
+.eliminationDiv {
+  position:fixed;
+  float: right;
+  top: 200px;
+  right: 300px;
+  width: 228px;
+  background-color: white;
+  display: block;
+  color: black;
+  border-color: black;
+  border: 1px solid;
+  padding: 6px;
+  box-shadow: 1px 1px inset;
+  border-radius: 5px;
+}

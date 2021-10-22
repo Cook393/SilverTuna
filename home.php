@@ -1,9 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang = "en" lang="en" >
-<?php require_once 'searchEngine.php'; ?>
-<?php $results = searchResults(); ?>
-    <head>
-	<link rel="stylesheet" type="text/css" href="tuna.css">
+<?php
+	session_start();
+	require_once 'homecontroller.php';
+	$results = searchResults();
+	$_SESSION["query"] = $query;
+?>
+<head>
+	<link rel="stylesheet" type="text/css" href="home.css">
 	<link rel="shortcut icon" href="logo2.jpg">
 	<title>Silver Tuna</title>
 	<meta charset="utf-8">
@@ -18,17 +22,17 @@
 		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
 </header>
 <main>
-<div class = "mainDiv">
-	<div class = "searchDiv">
+<div class = "wrapper">
+	<div class = "left">
 		<form class="form-style-1" style ="" action="home.php" method="POST">
-			<h4>Search by Restaurant Name:</h4>
-			<input type="text" name="searchBar" placeholder = "Restaurant Name" value = "<?php echo $restName; ?>" size='27'>
-			<h4>Your Location:</h4>
+			<h5>Search by Restaurant Name:</h5>
+			<input type="text" name="searchBar" placeholder ="Restaurant Name" value ="<?php echo $restName; ?>" >
+			<h5>Your Location:</h5>
 			<label>Chenango St, Morrisville, NY 13408</label>
-			<h4>Filter by Search Radius:</h4>
-			<input type="range" name="radius" min="1" max="120" value="<?php echo $radius; ?>" oninput="this.form.inputRadius.value=this.value" /><br><br>
+			<h5>Filter by Search Radius:</h5>
+			<input type="range" name="radius" min="1" max="120" value="<?php echo $radius; ?>" oninput="this.form.inputRadius.value=this.value" /><br>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="number" name="inputRadius" min="1" max="120" value="<?php echo $radius; ?>" oninput="this.form.radius.value=this.value" /> Miles
-			<h4>Filter by Category:</h4>
+			<h5>Filter by Category:</h5>
 			<input type="checkbox" name="category[]" value="Bar & Grill"  <?php checkInput("category", "Bar & Grill"); ?> > Bar & Grill <br>
 			<input type="checkbox" name="category[]" value="Chinese"	  <?php checkInput("category", "Chinese");     ?> > Chinese     <br>
 			<input type="checkbox" name="category[]" value="Desserts" 	  <?php checkInput("category", "Desserts");    ?> > Dessert     <br>
@@ -37,26 +41,23 @@
 			<input type="checkbox" name="category[]" value="Italian" 	  <?php checkInput("category", "Italian"); 	   ?> > Italian     <br>
 			<input type="checkbox" name="category[]" value="Mexican" 	  <?php checkInput("category", "Mexican"); 	   ?> > Mexican     <br>
 			<input type="checkbox" name="category[]" value="Seafood" 	  <?php checkInput("category", "Seafood"); 	   ?> > Seafood     <br>
-			<h4>Filter by Price Range:</h4>
+			<h5>Filter by Price Range:</h5>
 			$<input type="number" name="min" size="3" min="0" max="999" placeholder = "Min" value = "<?php echo $min; ?>" /> -
 			$<input type="number" name="max" size="3" min="0" max="999" placeholder = "Max" value = "<?php echo $max; ?>" />
-			<h4>Filter by Star Rating:</h4>
+			<h5>Filter by Star Rating:</h5>
 			<input type="radio" name="rating[]" value="1" checked <?php checkInput("rating", "1"); ?> > 1 & Up <br>
 			<input type="radio" name="rating[]" value="2"  		  <?php checkInput("rating", "2"); ?> > 2 & Up <br>
-			<input type="radio" name="rating[]" value="3"  	  	  <?php checkInput("rating", "3"); ?> > 3 & Up <br>
-			<input type="radio" name="rating[]" value="4"  		  <?php checkInput("rating", "4"); ?> > 4 & Up <br>
+			<input type="radio" name="rating[]" value="3"  		  <?php checkInput("rating", "3"); ?> > 3 & Up <br>
+			<input type="radio" name="rating[]" value="4"  	  	  <?php checkInput("rating", "4"); ?> > 4 & Up <br>
 			<br>
-			<button class ="form-style-1" type="input" name="submit"> Submit </button>
+			<button class ="submit" type="input" name="submit"> Submit </button>
 		</form>
 	</div>
-	<div style="clear: right"> </div>
-	<div class="resultsDiv">
+	<div class="right">
 		<form action="home.php" method="POST"> <?php displayResults($results); ?> </form>
 	</div>
-
 </div>
 <div style="clear: both"> </div>
-
 </main>
 <footer>
 	<small>Copyright &copy; 2021 Silver Tuna

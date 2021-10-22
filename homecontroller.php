@@ -3,7 +3,7 @@ require_once 'databasecontroller.php';
 
 //USER INPUT DATA
 
-// location (Charelton Hall)
+// location data (Charelton Hall)
 $longitude = -75.64124222090817;
 $latitude = 42.89651475818489;
 
@@ -15,10 +15,12 @@ $rating = "";
 $min ="";
 $max ="";
 $query = "";
-$results = [];
+$results = array();
+$numberOfResults = 0;
 
 
-//QUERY BUILDER FUNCTIONS
+
+//BASE QUERY BUILDER
 
 // accepts 3 parameters(Longitude, Latitude, searchRadius) & returns a string query on the 'location' table for restaurants within the defined search radius
 function getQuery($longitude, $latitude, $radius){
@@ -40,10 +42,9 @@ function getQuery($longitude, $latitude, $radius){
 
 
 
-
 //APPEND QUERY BUILDERS
 
-// LIKE %$restName%
+// AND LIKE %$restName%
 function andRestName($restName){
 	
 	$query = " AND rest.RestName LIKE" . "'%" . $restName . "%'";
@@ -84,7 +85,6 @@ function orderBy($columnName){
 	$query = " ORDER BY " . $columnName . " ASC";
 	return $query;
 }
-
 
 
 
@@ -162,7 +162,6 @@ function pricePointAppend(){
 	}
 }
 
-
 // append query based on rating user entered
 function ratingAppend(){
 	
@@ -194,7 +193,6 @@ function orderingAppend(){
 
 
 
-
 //SEARCH FUNCTIONS
 
 // performs a search on the database based on the user's input, returns search result array
@@ -211,7 +209,6 @@ function searchResults(){
 		categoryAppend();	
 		pricePointAppend();
 		ratingAppend();
-		orderingAppend();
 
 		// executing query and displaying results
 		$results = executeQuery($query);
@@ -220,7 +217,6 @@ function searchResults(){
 	}
 }
 
-
 function checkInput($name, $value){
 	
 	if(!empty($_POST[$name]) && in_array($value, $_POST[$name])) echo 'checked="checked"';
@@ -228,23 +224,24 @@ function checkInput($name, $value){
 
 
 
-
 //DISPLAY FUNCTIONS
 
 // test function for formatting user search results
-function displayResults($results){
-
+function displayResults(){
+	
+	global $results;
+	global $numberOfResults;
+	
 	if(isset($_POST['submit'])){
 		
-			// If there are results..
+		// If there are results..
 		if(mysqli_num_rows($results) > 0){
 	
-			$resultCount = mysqli_num_rows($results);
-			echo("<p> Number of Results: " . $resultCount ."</p>");
+			$numberOfResults = mysqli_num_rows($results);
 	
 			// Fetch data (Loops through an array of results)
 			while($row = mysqli_fetch_assoc($results)){
-					
+				
 				// Format and display results
 				echo(
 					"<table border=\"1\" bgcolor=\"white\">
@@ -261,8 +258,8 @@ function displayResults($results){
 					</table>
 					<br>"
 				);
-
 			}
+			echo("<p> Number of Results: " . $numberOfResults ."</p>");
 
 			echo(
 				"<div class=\"eliminationDiv\">
@@ -272,10 +269,14 @@ function displayResults($results){
 				</a>
 				</div>"
 			);
-
-
 		}
 		else{ echo "No results found..."; }
 	}
+}
+
+function displayNumberOfResults(){
+
+	global $numberOfResults;
+	echo("<p> Number of Results: " . $numberOfResults ."</p>");
 }
 ?>
