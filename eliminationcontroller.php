@@ -34,7 +34,7 @@ function echoListItem($results){
 			echo("<li class=\"ui-state-default\">" .
 
 				"<table border=\"1\" bgcolor=\"white\">
-				 	<tr><td rowspan=\"3\"><img src=\"logo2.jpg\"></img></td>
+				 	<tr><td rowspan=\"3\"><img src=". $row["image"] ."></img></td>
 					<td><h2>" . $row["RestName"] . "</h2></td>" .
 					"<td><b> Rating:</b> " . $row["Rating"] . " Stars</td</tr>
 					<tr>" .
