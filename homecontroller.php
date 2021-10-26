@@ -28,7 +28,7 @@ function getQuery($longitude, $latitude, $radius){
 	$query = 	"SELECT
 				rest.RestID, rest.RestName, rest.CategoryID, rest.LocID, rest.PricePoint, rest.Rating, rest.PhoneNumber, rest.URL,
 				loc.ZipCode, loc.Address, loc.City, loc.State, loc.Latitude, loc.Longitude,
-				cat.Category
+				cat.Category, cat.image
 				FROM location loc
 				LEFT JOIN restaurant rest ON loc.LocID = rest.LocID
 				RIGHT JOIN category cat ON rest.CategoryID = cat.CategoryID
@@ -245,12 +245,12 @@ function displayResults(){
 				// Format and display results
 				echo(
 					"<table border=\"1\" bgcolor=\"white\">
-					<tr><td rowspan=\"3\"><img src=\"logo2.jpg\"></img></td>
+					<tr><td rowspan=\"3\"><img src=". $row["image"] ."></img></td>
 					<td><h2>" . $row["RestName"] . "</h2></td>" .
 					"<td><b> Rating:</b> " . $row["Rating"] . " Stars</td</tr>
 					<tr>" .
 					"<td><b> Category:</b> " . $row["Category"] . "</td>" .
-					"<td><b> Average Dish Price:</b> " . $row["PricePoint"] . "</td></tr>
+					"<td><b> Average Dish Price:</b> $" . $row["PricePoint"] . "</td></tr>
 					<tr>" .
 					"<td><b> Address:</b> " . $row["Address"] . ", " . $row["City"] . ", " . $row["State"] . " " . $row["ZipCode"] . "</td>" .
 					"<td><a href=". $row["URL"] .">Website Link</a><br><b> Phone Number:</b> ". $row["PhoneNumber"] . "</td>
