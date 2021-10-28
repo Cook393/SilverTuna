@@ -122,14 +122,6 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   position:fixed;
   float: right;
   top: 200px;
-  right: 300px;
-  width: 228px;
-  background-color: white;
-  display: block;
-  color: black;
-  border-color: black;
-  border: 1px solid;
-  padding: 6px;
-  box-shadow: 1px 1px inset;
-  border-radius: 5px;
+  right: 250px;
+  
 }

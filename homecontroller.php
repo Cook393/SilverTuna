@@ -262,10 +262,10 @@ function displayResults(){
 			echo("<p> Number of Results: " . $numberOfResults ."</p>");
 
 			echo(
-				"<div class=\"eliminationDiv\">
-				<a href=\"elimination.php\" target=\"_blank\">
-				Want to narrow down your search results? 
-				Try it out!
+				"
+				<div class=\"eliminationDiv\">
+				<a href=\"elimination.php\"><img src=\"Images\SilverTunaButton.png\" style=\"width:350px;height:200px;\"></a>
+
 				</a>
 				</div>"
 			);
