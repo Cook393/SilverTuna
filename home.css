@@ -125,3 +125,11 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   right: 250px;
   
 }
+
+.noSite {
+  height: 500px;
+  padding-top: 100px;
+  padding-left: 400px;
+  font-size: 25px;
+  color: white;
+}

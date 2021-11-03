@@ -253,7 +253,7 @@ function displayResults(){
 					"<td><b> Average Dish Price:</b> $" . $row["PricePoint"] . "</td></tr>
 					<tr>" .
 					"<td><b> Address:</b> " . $row["Address"] . ", " . $row["City"] . ", " . $row["State"] . " " . $row["ZipCode"] . "</td>" .
-					"<td><a href=". $row["URL"] .">Website Link</a><br><b> Phone Number:</b> ". $row["PhoneNumber"] . "</td>
+					"<td><a href=". $row["URL"] ." target=\"_blank\">Website Link</a><br><b> Phone Number:</b> ". $row["PhoneNumber"] . "</td>
 					</tr>
 					</table>
 					<br>"
