@@ -133,3 +133,27 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   font-size: 25px;
   color: white;
 }
+
+.contact {
+  height: auto;
+  padding-top: 1px;
+  padding-left: 400px;
+  padding-bottom: 10px;
+  color: white;
+  font-size: 50px;
+}
+
+.about {
+  height: auto;
+  padding-top: 1px;
+  padding-left: 400px;
+  padding-bottom: 10px;
+  color: white;
+  font-size: 50px;
+}
+
+.h2about {
+color: #ffffff; font-family: 'Lato'; font-size: 54px;
+
+}
+

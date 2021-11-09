@@ -1,27 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-Strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang = "en" lang="en" >
+<?php
+	session_start();
+	require_once 'homecontroller.php';
+	$results = searchResults();
+	$_SESSION["query"] = $query;
+?>
 <head>
-	<link rel="stylesheet" type="text/css" href="home.css"></link>
-	<link rel="shortcut icon" href="logo.jpg">
+	<link rel="stylesheet" type="text/css" href="home.css">
+	<link rel="shortcut icon" href="logo2.jpg">
 	<title>Silver Tuna</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="true">
+
 </head>
-<body>
 <header>
-<nav><b><ul>
-  <li><a href="home.php">Home</a></li>
-  <li><a href="contact.html">Contact</a></li>
-  <li><a class = "active" href="about.html">About Us</a></li>
-</ul></b></nav>
+	<nav><ul>
+		<li><a href="home.php">Home</a></li>
+		<li><a href="contact.html">Contact</a></li>
+		<li><a class="active" href="about.html">About Us</a></li>
+		</ul>
+	</nav>
+		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
 </header>
 <main>
-<p> To be Continued Also </p>
+<div class = "wrapper">
+	<div class="about">
+		<div class="h2about">
+		<h2>Silver Tuna</h2></div>
+
+	Silver Tuna is an application created as a learning project through SUNY Morrisville.
+	<p>
+		<div class="h2about">
+		<hr>
+		<h2>Get to Know Our Team:</h2></div>
+		
+		<b>Olivia Browne</b>
+		<p>
+			Olivia is a senior at SUNY Morrisville.
+
+		<hr>
+		<b>Jim Cook</b>
+		<p>
+			Jim is a senior at SUNY Morrisville.
+
+		<hr>
+		<b>Charles Maitland</b>
+		<p>
+			Charles is a senior at SUNY Morrisville. He spends his free time watching movies and playing video games. After college, he hopes to find any job that lets him work from home.
+
+	</div>
+
+</div>
+<div style="clear: both"> </div>
 </main>
 <footer>
-	<small><i>Copyright &copy; 2021 Silver Tuna
+	<small>Copyright &copy; 2021 Silver Tuna
 		<br><a href="mailto:browne737@morrisville.edu">Email Us</a>
-	</i></small>
-
+	</small>
 </footer>
-</body>
 </html>
