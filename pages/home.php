@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang = "en" lang="en" >
 <?php
 	session_start();
-	require_once 'homecontroller.php';
+	require_once '../controllers/homecontroller.php';
 	$results = searchResults();
 	$_SESSION["query"] = $query;
 ?>
 <head>
-	<link rel="stylesheet" type="text/css" href="home.css">
-	<link rel="shortcut icon" href="logo2.jpg">
+	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="shortcut icon" href="../images/logo2.jpg">
 	<title>Silver Tuna</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
@@ -17,9 +17,9 @@
 </head>
 <header>
 	<nav><ul>
-		<li><a class="active" href="home.php">Home</a></li>
-		<li><a href="contact.html">Contact</a></li>
-		<li><a href="about.html">About Us</a></li>
+		<li><a class="active" href="../pages/home.php">Home</a></li>
+		<li><a href="../pages/contact.html">Contact</a></li>
+		<li><a href="../pages/about.html">About Us</a></li>
 		</ul>
 	</nav>
 		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
@@ -27,7 +27,7 @@
 <main>
 <div class = "wrapper">
 	<div class = "left">
-		<form class="form-style-1" style ="" action="home.php" method="POST">
+		<form class="form-style-1" style ="" action="../pages/home.php" method="POST">
 			<h5>Search by Restaurant Name:</h5>
 			<input type="text" name="searchBar" placeholder ="Restaurant Name" value ="<?php echo $restName; ?>" >
 			<h5>Your Location:</h5>
@@ -57,7 +57,7 @@
 		</form>
 	</div>
 	<div class="right">
-		<form action="home.php" method="POST"> <?php displayResults($results); ?> </form>
+		<form action="../pages/home.php" method="POST"> <?php displayResults($results); ?> </form>
 	</div>
 </div>
 <div style="clear: both"> </div>

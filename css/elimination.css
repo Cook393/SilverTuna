@@ -1,0 +1,152 @@
+header{ 
+  background-color: white; 
+  background-image: url("../images/logo2.jpg");
+  background-repeat: no-repeat;
+  background-position: left;
+  height: 150px;
+}
+
+header p{
+  text-align: right;  
+}
+
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 80px;
+  left: 250px;
+  overflow: hidden;
+  background-color: lightblue;
+  border-radius: 5px;
+}
+
+nav li{
+  float: left;
+}
+
+nav li a{
+  display: block;
+  color: darkblue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover{
+  background-color: white;
+}
+
+nav li a:active{
+  background-color: red;
+}
+
+footer{
+  font-style: italic;
+  text-align: center;
+}
+
+.option-header{
+  display: block;
+  color: black;
+  text-align: left;
+}
+
+.active{
+  background-color: lightgreen;
+}
+
+table{ 
+  width: 100%;
+  background-color: black;
+}
+
+th, td{
+  width: 25%;
+  border: black solid 1px;
+}
+
+tr:nth-of-type(even) { background-color: #ffcc33; }
+tr:nth-of-type(odd) { background-color: #fcf1d1; }
+
+#trash{
+  margin: 0;
+  padding: 5px;
+  list-style-type: none;
+  box-sizing:border-box;
+  min-height: 400px;
+  min-width: 600px;
+}
+
+#results{
+  margin: 0;
+  padding: 5px;
+  list-style-type: none;
+  box-sizing:border-box;
+}
+
+#keep{
+  margin: 0;
+  padding: 5px;
+  list-style-type: none;
+  box-sizing:border-box;
+  min-height: 400px;
+  min-width: 600px;
+}
+
+.wrapper{
+  margin: auto;
+  width: 100%;
+  position: relative;
+}
+
+.left{
+  float: left;
+  width: 550px;
+  height: 450px;
+  position: relative;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.center{
+  float: left;
+  width: 550px;
+  height: 450px;
+  position: relative;
+}
+
+.right{
+  float: left;
+  width: 550px;
+  height: 450px;
+  position: relative;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.topPicks{
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 5px;
+  width: 900px;
+  height: 700px;
+  box-sizing: border-box;
+  list-style-type: none;
+  overflow-y: scroll;
+  visibility: visible;
+  float: left;
+}
+
+.ourPick{
+  
+  border: 1px solid #eee;
+  margin: 0;
+  padding: 5px;
+  width: 900px;
+  height: 700px;
+  box-sizing: border-box;
+  list-style-type: none;
+  float: left;
+}

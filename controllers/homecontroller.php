@@ -1,5 +1,5 @@
 <?php
-require_once 'databasecontroller.php';
+require_once '../php/database.php';
 
 //USER INPUT DATA
 
@@ -238,6 +238,8 @@ function displayResults(){
 		if(mysqli_num_rows($results) > 0){
 	
 			$numberOfResults = mysqli_num_rows($results);
+
+			echo("<p> Number of Results: " . $numberOfResults ."</p>");
 	
 			// Fetch data (Loops through an array of results)
 			while($row = mysqli_fetch_assoc($results)){
@@ -259,13 +261,11 @@ function displayResults(){
 					<br>"
 				);
 			}
-			echo("<p> Number of Results: " . $numberOfResults ."</p>");
 
 			echo(
 				"
 				<div class=\"eliminationDiv\">
-				<a href=\"elimination.php\"><img src=\"Images\SilverTunaButton.png\" style=\"width:350px;height:200px;\"></a>
-
+				<a href=\"elimination.php\"><img src=\"..\images\SilverTunaButton.png\" style=\"width:350px;height:200px;\"></a>
 				</a>
 				</div>"
 			);
