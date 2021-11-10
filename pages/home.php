@@ -53,10 +53,11 @@
 			<input type="radio" name="rating[]" value="3"  		  <?php checkInput("rating", "3"); ?> > 3 & Up <br>
 			<input type="radio" name="rating[]" value="4"  	  	  <?php checkInput("rating", "4"); ?> > 4 & Up <br>
 			<br>
-			<button class ="submit" type="input" name="submit"> Submit </button>
+			<button class="clear" type="reset" onclick="resetForm()"> Clear </button><button class ="submit" type="input" name="submit"> Submit </button>
 		</form>
 	</div>
-	<div class="right">
+	<div class="right" style="text-align: center;">
+		<img src="../images/homeImage.png" id = 'homeImage' class="homeImage">
 		<form action="../pages/home.php" method="POST"> <?php displayResults($results); ?> </form>
 	</div>
 </div>

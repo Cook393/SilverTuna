@@ -117,9 +117,21 @@ function restNameAppend(){
 	// checking to see if searchBar has a value
 	if(!empty($_POST['searchBar'])) { 
 			
-		$restName = $_POST['searchBar'];
+		$restName = removeThe($_POST['searchBar']);
 		$query = $query . andRestName($restName);
 	}
+}
+
+//Removes "the" from the search to make sure that someone still gets results
+function removeThe($restName){
+	if(strpos($restName, 'the ') !== false){
+		return str_replace('the ', '', $restName);
+	}
+	else{
+
+		return $restName;
+	}
+
 }
 
 // append query based on categorys user entered
@@ -237,16 +249,19 @@ function displayResults(){
 		// If there are results..
 		if(mysqli_num_rows($results) > 0){
 	
-			$numberOfResults = mysqli_num_rows($results);
-
-			echo("<p> Number of Results: " . $numberOfResults ."</p>");
+			$numberOfResults = mysqli_num_rows($results);			
 	
 			// Fetch data (Loops through an array of results)
 			while($row = mysqli_fetch_assoc($results)){
 				
 				// Format and display results
 				echo(
-					"<table border=\"1\" bgcolor=\"white\">
+					"
+					<script>
+					var homeImage = document.getElementById('homeImage');
+					homeImage.parentNode.removeChild(homeImage);
+					</script>
+					<table border=\"1\" bgcolor=\"white\">
 					<tr><td rowspan=\"3\"><img src=". $row["image"] ."></img></td>
 					<td><h2>" . $row["RestName"] . "</h2></td>" .
 					"<td><b> Rating:</b> " . $row["Rating"] . " Stars</td</tr>
@@ -261,16 +276,20 @@ function displayResults(){
 					<br>"
 				);
 			}
+			echo("<p> Number of Results: " . $numberOfResults ."</p>");
 
 			echo(
 				"
 				<div class=\"eliminationDiv\">
-				<a href=\"elimination.php\"><img src=\"..\images\SilverTunaButton.png\" style=\"width:350px;height:200px;\"></a>
-				</a>
+				<a href=\"elimination.php\" target=\"_blank\"><img src=\"..\images\SilverTunaButton.png\"></a>
 				</div>"
 			);
 		}
-		else{ echo "No results found..."; }
+		else{ echo "<script>
+					var homeImage = document.getElementById('homeImage');
+					homeImage.parentNode.removeChild(homeImage);
+					</script>
+					<h2> No results found. Try checking your spelling. </h2>"; }
 	}
 }
 

@@ -81,8 +81,13 @@ footer {
 }
 
 .submit {
-  width: 100%;
+  width: 50%;
   height: 20px;
+}
+
+.clear {
+   width: 50%;
+   height: 20px;
 }
 
 .wrapper {
@@ -155,5 +160,13 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
 .h2about {
 color: #ffffff; font-family: 'Lato'; font-size: 54px;
 
+}
+
+.homeImage{
+display: block;
+margin-left: auto;
+margin-right: auto;
+padding-top: 135px;
+padding-left: 400px;
 }
 
