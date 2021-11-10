@@ -8,7 +8,7 @@
 ?>
 <head>
 	<link rel="stylesheet" type="text/css" href="../css/home.css">
-	<link rel="shortcut icon" href="logo2.jpg">
+	<link rel="shortcut icon" href="../images/logo2.jpg">
 	<title>Silver Tuna</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
