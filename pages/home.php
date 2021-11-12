@@ -11,7 +11,7 @@
 	<link rel="shortcut icon" href="../images/logo2.jpg">
 	<title>Silver Tuna</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="HandheldFriendly" content="true">
 </head>
@@ -22,14 +22,16 @@
 		<li><a href="../pages/about.html">About Us</a></li>
 		</ul>
 	</nav>
-		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
 </header>
+	<div class="motto">
+		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
+	</div>
 <main>
 <div class = "wrapper">
 	<div class = "left">
 		<form class="form-style-1" style ="" action="../pages/home.php" method="POST">
 			<h5>Search by Restaurant Name:</h5>
-			<input type="text" name="searchBar" placeholder ="Restaurant Name" value ="<?php echo $restName; ?>" >
+			<input type="text" name="searchBar" placeholder ="Restaurant Name" style="width:10vw" value ="<?php echo $restName; ?>" >
 			<h5>Your Location:</h5>
 			<label>Chenango St, Morrisville, NY 13408</label>
 			<h5>Filter by Search Radius:</h5>
@@ -45,8 +47,8 @@
 			<input type="checkbox" name="category[]" value="Mexican" 	  <?php checkInput("category", "Mexican"); 	   ?> > Mexican     <br>
 			<input type="checkbox" name="category[]" value="Seafood" 	  <?php checkInput("category", "Seafood"); 	   ?> > Seafood     <br>
 			<h5>Filter by Price Range:</h5>
-			$<input type="number" name="min" size="3" min="0" max="999" placeholder = "Min" value = "<?php echo $min; ?>" /> -
-			$<input type="number" name="max" size="3" min="0" max="999" placeholder = "Max" value = "<?php echo $max; ?>" />
+			$<input type="number" name="min" size="3" min="0" max="999" placeholder = "Min" style="width:3.5vw" value = "<?php echo $min; ?>" /> -
+			$<input type="number" name="max" size="3" min="0" max="999" placeholder = "Max" style="width:3.5vw" value = "<?php echo $max; ?>" />
 			<h5>Filter by Star Rating:</h5>
 			<input type="radio" name="rating[]" value="1" checked <?php checkInput("rating", "1"); ?> > 1 & Up <br>
 			<input type="radio" name="rating[]" value="2"  		  <?php checkInput("rating", "2"); ?> > 2 & Up <br>

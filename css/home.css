@@ -4,6 +4,7 @@ header {
   background-repeat: no-repeat;
   background-position: left;
   height: 150px;
+  font-size: 1vw;
 }
 
 header p {
@@ -15,6 +16,7 @@ header p {
   left: 1500px;
   overflow: hidden;
   border-radius: 5px;
+  font-size: 1vw;
 }
 
 nav ul {
@@ -27,10 +29,12 @@ nav ul {
   overflow: hidden;
   background-color: lightblue;
   border-radius: 5px;
+  font-size: 1vw;
 }
 
 nav li {
   float: left;
+  font-size: 1vw;
 }
 
 nav li a {
@@ -39,22 +43,27 @@ nav li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-size: 1vw;
 }
 
 nav li a:hover {
   background-color: white;
+  font-size: 1vw;
 }
 nav li a:active{
   background-color: red;
+  font-size: 1vw;
 }
 
 main {
   margin: auto;
   background-color: #688b9a;
+  font-size: 1vw;
 }
 
 footer {
   font-style: italic;
+  font-size: 1vw;
   text-align: center;
 }
 
@@ -62,10 +71,12 @@ footer {
   display: block;
   color: black;
   text-align: left;
+  font-size: 1vw;
 }
 
 .active{
   background-color: lightgreen;
+  font-size: 1vw;
 }
 
 .form-style-1 {
@@ -78,29 +89,38 @@ footer {
   box-shadow: 1px 1px inset;
   border-radius: 1px;
   height: 70%;
+  width: 12vw;
+  font-size: 1vw;
+  overflow: hidden;
 }
 
 .submit {
   width: 50%;
   height: 20px;
+  font-size: .75vw;
 }
 
 .clear {
    width: 50%;
    height: 20px;
+   font-size: .75vw;
 }
 
 .wrapper {
   width: 80%;
+     font-size: 1vw;
+
 }
 
 .left {
-  width: 13%;
+  width: 20%;
   color: black;
   margin: auto;
   float: left;
   padding: 6px;
   overflow: hidden;
+     font-size: 1vw;
+
 }
 
 .right {
@@ -109,15 +129,21 @@ footer {
   padding-bottom: 6px;
   padding-left: 100px;
   float: left;
+     font-size: 1vw;
+
 }
 
 table{ 
     width: 100%;
     background-color: black;
+       font-size: 1vw;
+
 }
 th, td{
     width: 25%;
     border: black solid 1px;
+       font-size: 1vw;
+
 }
 
 tr:nth-of-type(even) { background-color: #ffcc33; }
@@ -127,7 +153,9 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   position:fixed;
   float: right;
   top: 200px;
-  right: 250px;
+  right: 5vw;
+  max-width: 25%;
+  max-height: auto;
   
 }
 
@@ -137,6 +165,8 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   padding-left: 400px;
   font-size: 25px;
   color: white;
+font-size: 1vw;
+
 }
 
 .contact {
@@ -145,7 +175,8 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   padding-left: 400px;
   padding-bottom: 10px;
   color: white;
-  font-size: 50px;
+  font-size: 2vw;
+
 }
 
 .about {
@@ -154,19 +185,38 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   padding-left: 400px;
   padding-bottom: 10px;
   color: white;
-  font-size: 50px;
+  font-size: 2vw;
 }
 
-.h2about {
-color: #ffffff; font-family: 'Lato'; font-size: 54px;
+.motto {
+  
+  font-size: 1vw;
+  height:auto;
+  float: right;
+  right: 5vw;
+  overflow: hidden;
+  border-radius: 5px;
+  
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 80px;
+  
 
+}
+
+
+.h2about {
+color: #ffffff; font-family: 'Lato'; font-size: 3vw;
 }
 
 .homeImage{
 display: block;
 margin-left: auto;
 margin-right: auto;
-padding-top: 135px;
-padding-left: 400px;
+padding-top: 125px;
+padding-left: 100px;
+max-width: 100%;
+max-height: auto;
 }
 

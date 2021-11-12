@@ -11,7 +11,7 @@
 	<link rel="shortcut icon" href="../images/logo2.jpg">
 	<title>Silver Tuna</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="HandheldFriendly" content="true">
 </head>
@@ -22,8 +22,10 @@
 		<li><a href="../pages/about.html">About Us</a></li>
 		</ul>
 	</nav>
-		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
 </header>
+	<div class="motto">
+		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
+	</div>
 <main>
 <div class = "wrapper">
 	<div class="noSite">
