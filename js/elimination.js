@@ -1,18 +1,26 @@
 //DATA
-
+	
 	var counter = 0;
-	var ul = document.getElementById("results");
-	const button = document.getElementById("submit");
+	const main = document.getElementById("main");
 
 
 //EVENT LISTENERS
-
-	//on load function
-	window.onload = function(){ ProcessData(); }
 	
-	//SORTABLE LISTS
+	//on click event to execute elimination engine
+	document.getElementById("submitButton").addEventListener("click", function(){
+    	
+    	renderEliminationHTML();
+    	requestData();
+    	connectSortables();
+	});
 
-		// ---> JQuery Sortables API Documentation: https://api.jqueryui.com/sortable/
+
+//JQUERY SORTABLES
+
+	//--->JQuery Sortables API Documentation: https://api.jqueryui.com/sortable/
+
+	//connects lists to sortable classes for drag and drop
+	function connectSortables(){
 
 		$(function(){$("#results").sortable({connectWith:"#trash, #keep"})});
 
@@ -20,8 +28,9 @@
 
 		$(function(){$("#keep").sortable()});
 
-	//li removal listener
-	$("#results").on("sortremove", function(event, ui){ ProcessData(); });
+		//listener for a restaurant being removed from the center ul
+		$("#results").on("sortremove", function(event, ui){ requestData(); });
+	}
 
 
 //AJAX REQUEST
@@ -29,40 +38,77 @@
 	// ---> AJAX tutorial: https://www.youtube.com/watch?v=rJesac0_Ftw&t=1591s&ab_channel=LearnWebCode
 
 	//creates an ajax request and displays the current response
-	function processData(){
+	function requestData(){
 
+		//create request
 		var request = new XMLHttpRequest();
+
+		//specify and open request
 		request.open("GET", "../json/results.json");
 
 		request.onload = function(){
 
+			//get reponseText and parse to readable json object
 			var data = JSON.parse(request.responseText);
-			displayRestaurant(data);
+
+			//display dynamic html on request load
+			renderRestaurantHTML(data);
 		};
 
+		//send XMLHttpRequest
 		request.send();
 	}
 
 
 //DYNAMIIC HTML
 
-	//recieves ajax request data and adds the current restaurant to the page, or displays the final results
-	function displayRestaurant(data){
+	//writes DOM elements needed to display the elimination feature
+	function renderEliminationHTML(){
 
-		//current results.json data
+		//empty elements from main
+		main.innerHTML="";
+
+		//create template literal for DOM elements
+		var htmlString =
+
+			`
+			<div class="wrapper">
+				<div class="left">
+					<ul class="sortable" id="trash"></ul>
+				</div>
+				<div class="center">
+					<ul class="sortable" id="results"></ul>
+				</div>
+				<div class="right">
+					<ul class="sortable" id="keep"></ul>
+				</div>
+				<div style="clear: both"></div>
+			</div>
+			`
+
+		//write template to main content
+		main.innerHTML = htmlString;
+
+		//edit wrapper style
+		var wrapper = $(".wrapper"); 
+	  	wrapper.css("z-index", "0");
+	}
+
+	//writes DOM elements needed to display restaurants
+	function renderRestaurantHTML(data){
+
+		//current "results.json" file data
 		var length = data.length;
 		
 		//loop through json array
 		if(counter < length){
 
-			//create restaurant table in HTML
-	  		htmlString = 
+			//create template literal for DOM elements
+		  	var htmlString =
 
-	  			//template literal
-
-		  		`
-		  		<li class="ui-state-default" id=\"${counter}\">
-		  		<table border="1" bgcolor="white">
+			  	`
+			  	<li class="ui-state-default">
+			  	<table border="1" bgcolor="white">
 				<tr><td rowspan=\"3\"><img src=\" ${data[counter].image} \"></img></td>
 				<td><h2> ${data[counter].RestName} </h2></td>
 				<td><b> Rating:</b> ${data[counter].Rating} Stars</td</tr>
@@ -74,44 +120,106 @@
 				<td><a href= \"${data[counter].URL}\">Website Link</a><br><b> Phone Number:</b> ${data[counter].PhoneNumber} </td>
 				</tr>
 				</table>
-		  		`
+			  	`
 
-		  	//change the inner HTML of results List
-	  		ul.innerHTML = htmlString;
-	  		counter++;
+		  	//edit the inner HTML of results list
+		  	var results = document.getElementById("results");
+		  	results.innerHTML = htmlString;
+
+		  	//increment counter
+		  	counter++;
 		}
-		else{ displayFinalResults(); }
+		else{ renderFinalResults(); }
 	}
 
+	//final display function
+	function renderFinalResults(){
 
-	//final results display
-	function displayFinalResults(){
-
-		var topPicks = document.getElementById("right");
-		topPicks.className = "topPicks";
-		
-		$("#trash").remove();
+		//find and remove results list and center div elements
 		$("#results").remove();
-		$(".left").remove();
 		$(".center").remove();
 
-		var list = $("#keep")
+		//remove and add a class to left div element
+		var left = $(".left");
+		left.removeClass("left");
+		left.addClass("ourPick");
 
-		if(list.length > 0){ $("<h2>Top Choices</h2>").insertBefore(list); }
+		//remove and add a class to right div element
+		var right = $(".right");
+		right.removeClass("right");
+		right.addClass("topChoices");
 
-		const randomClone = cloneRandomLi();
+		//find keep list, disable sortability, make it visisble, and insert heading
+		var keep = $("#keep");
+		keep.sortable("disable");
+		keep.css("visibility", "visible");
+		keep.css("overflow", "auto");
 
-		$(randomClone).insertBefore(topPicks);
-		$("<h2>Our Pick</h2>").insertBefore(randomClone);
+		//find trash list, empty it, disable sortability, and make it visible
+		var trash = $("#trash");
+		trash.empty();
+		trash.sortable("disable");
+		trash.css("visibility", "visible");
+
+		renderHeadingHTML();
+
+		//clone a random list item and add it as our pick
+		var clone = getRandomClone();
+		trash.append(clone);
 	}
 
 
-	
-	
-	//clone random list item
-	function cloneRandomLi(){
+	//writes DOM elements needed to display final results headings
+	function renderHeadingHTML(){
 
-		var clone = $("#keep li:nth-child(1)");
+		//create template literal for DOM elements
+		var htmlString = "";
+
+		var length = document.querySelectorAll("#keep li").length;
+
+		//render list headings based on number of elements in keep list
+		if(length >= 2){
+
+			htmlString +=
+				`
+			    <div>
+					<h2 style="float:left; width: 52%; align-items: center; justify-content: center; display: flex;">Our Pick</h2>
+					<h2 style="float:right; width: 42%; align-items: center; justify-content: center; display: flex;">Other Top Picks</h2>
+				</div>
+				<div style="clear: left"></div>
+				`
+		}
+		else if(length == 1){ 
+
+			htmlString +=
+				`
+			    <div>
+					<h2 style="float:left; width: 52%; align-items: center; justify-content: center; display: flex;">Our Pick</h2>
+				</div>
+				<div style="clear: left"></div>
+				`
+		}
+		else{
+
+			htmlString +=
+				`
+				<h1>No results found..</h1>
+				`
+		}
+
+		//add a div for headings before wrapper div
+		if(htmlString != ""){ $(htmlString).insertBefore(".wrapper"); }
+	}
+
+
+//MATH FUNCTIONS
+
+	//clone random list item
+	function getRandomClone(keep){
+
+		var length = document.querySelectorAll("#keep li").length
+		const random = Math.floor(Math.random() * length) + 1;
+		var clone = $("#keep li:nth-child("+random+")");
 
 	  	return clone;
 	}

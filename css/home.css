@@ -108,8 +108,7 @@ footer {
 
 .wrapper {
   width: 80%;
-     font-size: 1vw;
-
+  font-size: 1vw;
 }
 
 .left {
@@ -119,8 +118,7 @@ footer {
   float: left;
   padding: 6px;
   overflow: hidden;
-     font-size: 1vw;
-
+  font-size: 1vw;
 }
 
 .right {
@@ -129,21 +127,19 @@ footer {
   padding-bottom: 6px;
   padding-left: 100px;
   float: left;
-     font-size: 1vw;
-
+  font-size: 1vw;
 }
 
 table{ 
-    width: 100%;
-    background-color: black;
-       font-size: 1vw;
+  width: 100%;
+  background-color: black;
+  font-size: 1vw;
 
 }
 th, td{
-    width: 25%;
-    border: black solid 1px;
-       font-size: 1vw;
-
+  width: 25%;
+  border: black solid 1px;
+  font-size: 1vw;
 }
 
 tr:nth-of-type(even) { background-color: #ffcc33; }
@@ -158,15 +154,13 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   max-height: auto;
   
 }
-
 .noSite {
   height: 500px;
   padding-top: 100px;
   padding-left: 400px;
   font-size: 25px;
   color: white;
-font-size: 1vw;
-
+  font-size: 1vw;
 }
 
 .contact {
@@ -189,34 +183,28 @@ font-size: 1vw;
 }
 
 .motto {
-  
   font-size: 1vw;
   height:auto;
   float: right;
   right: 5vw;
   overflow: hidden;
   border-radius: 5px;
-  
   margin: 0;
   padding: 0;
   position: absolute;
   top: 80px;
-  
-
 }
 
-
 .h2about {
-color: #ffffff; font-family: 'Lato'; font-size: 3vw;
+  color: #ffffff; font-family: 'Lato'; font-size: 3vw;
 }
 
 .homeImage{
-display: block;
-margin-left: auto;
-margin-right: auto;
-padding-top: 125px;
-padding-left: 100px;
-max-width: 100%;
-max-height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 125px;
+  padding-left: 100px;
+  max-width: 100%;
+  max-height: auto;
 }
-

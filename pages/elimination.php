@@ -8,7 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=2.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="HandheldFriendly" content="true">
-
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <?php
@@ -32,27 +31,12 @@
 		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
 	</div>
 </header>
-<body>
-	<br>
-	<hr>
-	<br>
-	<div class="wrapper">
-		<div class="left">
-			<ul class="sortable" id="trash"></ul>
-		</div>
-		<div class="center">
-			<ul class="sortable" id="results"></ul>
-		</div>
-		<div class="right" id="right">
-			<ul class="sortable" id="keep"></ul>
-		</div>
-		<div style="clear: both"></div>
+<main id="main">
+	<div class="overlay">
+    	<button id="submitButton">Start</button>
 	</div>
-	<br>
-	<hr>
-	<br>
 	<script src="../js/elimination.js"></script>
-</body>
+</main>
 <footer>
 	<small>Copyright &copy; 2021 Silver Tuna
 		<br><a href="mailto:browne737@morrisville.edu">Email Us</a>

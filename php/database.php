@@ -9,7 +9,7 @@
 
 //CONNECTION FUNCTIONS
 
-	// creates and returns a connection to phpMyAdmin
+	//creates and returns a connection to phpMyAdmin
 	function createConnection(){ 
 		
 		global $servername;
@@ -26,19 +26,19 @@
 		mysqli_close($connection);
 	} 
 
-	// test to see if a connection to phpMyAdmin exists, returns boolean
+	//test to see if a connection to phpMyAdmin exists, returns boolean
 	function testConnection($connection){
 		
 		if(!$connection){	
 			
-			// MySQL Connection Error Message
+			//MySQL Connection Error Message
 			die("Unable to connect: " . mysql_connect_error() . "<br>");
 			
 			return false;
 		}
 		else{	
 
-			// Successful MySQL Connection Message	
+			//successful MySQL Connection Message	
 			//echo("Connection successful! <br>");
 			
 			return true;
@@ -48,23 +48,25 @@
 
 //EXECUTE QUERY ON DB
 
-	// accepts parameter(query) and returns results
+	//accepts parameter(query) and returns results
 	function executeQuery($query){ 
 		
-		// Creating & storing a database connection
+		//creating & storing a database connection
 		$connection = createConnection();
 		
-		// Checks to see if a connection exists
-		if(testConnection($connection)){
-			
-			// Run MySQL query and store the results as an array of records
-			$results = mysqli_query($connection, $query);
-			
-			// Closes current database connection
-			closeConnection($connection);
-			
-			return $results;
+		if(!empty($query)){
+
+			//checks to see if a connection exists
+			if(testConnection($connection)){
+				
+				//run MySQL query and store the results as an array of records
+				$results = mysqli_query($connection, $query);
+				
+				//closes current database connection
+				closeConnection($connection);
+				
+				return $results;
+			}
 		}
 	}
-
 ?>
