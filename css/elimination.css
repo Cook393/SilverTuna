@@ -135,28 +135,50 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
 .topChoices, .ourPick{
   float: left;
   width: 47%;
-  height: 500px;
+  height: auto;
   position: relative;
   overflow: hidden;
   padding: 20px;
+  padding-bottom: 100px;
 }
 
 .overlay{
-  width: 96%;
-  margin: auto;
+  width: 100%;
   background-color: lightgreen;
   box-sizing: border-box;
-  justify-content: center;
-  z-index: 999;
-  display: flex;
+  text-align: center;
   align-items: center;
   height: 500px;
   opacity: 90%;
-  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.overlayText{
+  color: black;
+  font-size: 2vw;
+  font-style: italic;
 }
 
 #submitButton, #resultsButton{
-  width: 300px;
-  height: 100px;
+  width: 21vw;
+  height: 7vw;
   font-size: 3vw;
+}
+
+.motto {
+  font-size: 1vw;
+  height:auto;
+  float: right;
+  right: 5vw;
+  overflow: hidden;
+  border-radius: 5px;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 80px;
 }

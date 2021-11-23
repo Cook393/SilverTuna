@@ -5,7 +5,7 @@
 	<link rel="shortcut icon" href="../images/logo2.jpg">
 	<title>Silver Tuna</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=2.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="HandheldFriendly" content="true">
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
@@ -27,15 +27,23 @@
 			<li><a href="../pages/about.html">About Us</a></li>
 		</ul>
 	</nav>
+</header>
 	<div class="motto">
 		<p>"That's the one, Marv. That's the <b>silver tuna</b>." <br> <i>Home Alone</i>, 1990  </p>
 	</div>
-</header>
 <main id="main">
 	<div class="overlay">
     	<button id="submitButton">Start</button>
-	</div>
-	<script src="../js/elimination.js"></script>
+	    	<p>
+	    		<div class="overlayText">
+    	Welcome to the Silver Tuna's patented Elimination Feature!
+    	<p>
+    		On the next page, you'll eliminate restaurants from your search results
+    		<br>Then <b>WE'LL</b> choose for you!
+    </div>
+    </div>
+		<script src="../js/elimination.js"></script>
+	
 </main>
 <footer>
 	<small>Copyright &copy; 2021 Silver Tuna
