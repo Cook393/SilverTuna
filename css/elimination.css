@@ -86,10 +86,8 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
 
 #trash, #keep{
   list-style-type: none;
-  visibility: hidden;
   width: 95%;
   height: 500px;
-  overflow: hidden;
 }
 
 #results{
@@ -111,7 +109,6 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   width: 30%;
   height: 500px;
   background-color: red;
-  opacity: 80%;
   position: relative;
 }
 
@@ -128,7 +125,6 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   width: 30%;
   height: 500px;
   background-color: lightgreen;
-  opacity: 90%;
   position: relative;
 }
 

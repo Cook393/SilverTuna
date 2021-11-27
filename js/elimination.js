@@ -24,9 +24,9 @@
 
 		$(function(){$("#results").sortable({connectWith:"#trash, #keep"})});
 
-		$(function(){$("#trash").sortable()});
+		$(function(){$("#trash").sortable({connectWith:"#trash, #keep"})});
 
-		$(function(){$("#keep").sortable()});
+		$(function(){$("#keep").sortable({connectWith:"#trash, #keep"})});
 
 		//listener for a restaurant being removed from the center ul
 		$("#results").on("sortremove", function(event, ui){ requestData(); });
@@ -114,7 +114,7 @@
 				<td><b> Rating:</b> ${data[counter].Rating} Stars</td</tr>
 				<tr>
 				<td><b> Category:</b> ${data[counter].Category} </td>
-				<td><b> Average Dish Price:</b> ${data[counter].PricePoint} </td></tr>
+				<td><b> Average Dish Price: $</b>${data[counter].PricePoint} </td></tr>
 				<tr>
 				<td><b> Address:</b> ${data[counter].Address} ${data[counter].City} ${data[counter].State} ${data[counter].ZipCode} </td>
 				<td><a href= \"${data[counter].URL}\">Website Link</a><br><b> Phone Number:</b> ${data[counter].PhoneNumber} </td>
