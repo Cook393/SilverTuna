@@ -109,15 +109,22 @@
 			  	`
 			  	<li class="ui-state-default">
 			  	<table border="1" bgcolor="white">
-				<tr><td rowspan=\"3\"><img src=\" ${data[counter].image} \"></img></td>
+				<tr>
+				<td><img src=\" ${data[counter].image} \" width=\" 150vw\" height = \" 100vw\"></img></td>
 				<td><h2> ${data[counter].RestName} </h2></td>
-				<td><b> Rating:</b> ${data[counter].Rating} Stars</td</tr>
+				<br>
+
+				</td>
+				</tr>
 				<tr>
-				<td><b> Category:</b> ${data[counter].Category} </td>
-				<td><b> Average Dish Price: $</b>${data[counter].PricePoint} </td></tr>
+				<td><b> Address:</b> ${data[counter].Address} <br> ${data[counter].City} ${data[counter].State} ${data[counter].ZipCode}</td>
+				<td><b> Average Dish Price: $</b>${data[counter].PricePoint}
+				<p><b> Rating:</b> ${data[counter].Rating} Stars</td>
+
+				</tr>
 				<tr>
-				<td><b> Address:</b> ${data[counter].Address} ${data[counter].City} ${data[counter].State} ${data[counter].ZipCode} </td>
 				<td><a href= \"${data[counter].URL}\">Website Link</a><br><b> Phone Number:</b> ${data[counter].PhoneNumber} </td>
+				<td><b> Category:</b> ${data[counter].Category}</td>
 				</tr>
 				</table>
 			  	`

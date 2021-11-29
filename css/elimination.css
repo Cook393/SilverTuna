@@ -69,13 +69,13 @@ main{
 }
 
 table{ 
-  width: 100%;
+  width: 90%;
   background-color: black;
   font-size: 1vw;
 }
 
 th, td{
-  width: 25%;
+  width: 20vw;
   border: black solid 1px;
   font-size: 1vw;
 }
@@ -106,8 +106,9 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
 
 .left{
   float: left;
-  width: 30%;
-  height: 500px;
+  width: 30vw;
+  height: 1000px;
+  margin: auto;
   background-color: red;
   position: relative;
 }
@@ -115,15 +116,16 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
 .center{
   float: left;
   width: 35%;
-  height: 500px;
+  height: 1000px;
   position: relative;
   padding: 20px;
 }
 
 .right{
   float: left;
-  width: 30%;
-  height: 500px;
+  width: 30vw;
+  height: 1000px;
+  margin: auto;
   background-color: lightgreen;
   position: relative;
 }
