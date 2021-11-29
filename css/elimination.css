@@ -121,6 +121,13 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   padding: 20px;
 }
 
+.centerText{
+  position: absolute;
+  top: 300px;
+  bottom: 400px;
+  font-size: 1.75vw;
+}
+
 .right{
   float: left;
   width: 30vw;

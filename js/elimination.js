@@ -78,6 +78,15 @@
 				</div>
 				<div class="center">
 					<ul class="sortable" id="results"></ul>
+					<p>
+					<p>
+					<div class="centerText"><center>
+					Like this restaurant? Drag it right! <img src="../images/arrowGreen.png" width="50vw" height="25vw">
+					<p>
+					<img src="../images/arrowRed.png" width="50vw" height="25vw"> Don't want it today? Drag it left!
+					<p>
+					Change your mind? Drag it to the other side!
+					</center></div>
 				</div>
 				<div class="right">
 					<ul class="sortable" id="keep"></ul>
@@ -126,8 +135,10 @@
 				<td><a href= \"${data[counter].URL}\">Website Link</a><br><b> Phone Number:</b> ${data[counter].PhoneNumber} </td>
 				<td><b> Category:</b> ${data[counter].Category}</td>
 				</tr>
+
 				</table>
 			  	`
+
 
 		  	//edit the inner HTML of results list
 		  	var results = document.getElementById("results");
@@ -136,7 +147,8 @@
 		  	//increment counter
 		  	counter++;
 		}
-		else{ renderFinalResults(); }
+		else{ renderFinalResults(); 
+		}
 	}
 
 	//final display function
@@ -217,7 +229,6 @@
 		//add a div for headings before wrapper div
 		if(htmlString != ""){ $(htmlString).insertBefore(".wrapper"); }
 	}
-
 
 //MATH FUNCTIONS
 
