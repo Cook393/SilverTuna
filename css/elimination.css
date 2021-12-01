@@ -109,7 +109,7 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   width: 30vw;
   height: 1000px;
   margin: auto;
-  background-color: red;
+  background-color: #ff5f5c;
   position: relative;
 }
 
@@ -186,4 +186,14 @@ tr:nth-of-type(odd) { background-color: #fcf1d1; }
   padding: 0;
   position: absolute;
   top: 80px;
+}
+
+.labels{
+  text-align: center;
+}
+
+.buttonResults{
+  margin: auto;
+  text-align: center;
+  padding: 5px;
 }

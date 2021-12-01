@@ -74,13 +74,17 @@
 			`
 			<div class="wrapper">
 				<div class="left">
+					<p id = "label" class = "labels"><img src="../images/x.png" width="30px" height="30px"><br>Not Today</p>
 					<ul class="sortable" id="trash"></ul>
 				</div>
 				<div class="center">
 					<ul class="sortable" id="results"></ul>
+					<button class = "buttonResults" hidden="hidden" id="resultButton" type="button" onclick="renderFinalResults()" = ; >Go To Final Results</button>
 					<p>
 					<p>
-					<div class="centerText"><center>
+					<br>
+					<div id = "instructions" class="centerText"><center>
+					<br>
 					Like this restaurant? Drag it right! <img src="../images/arrowGreen.png" width="50vw" height="25vw">
 					<p>
 					<img src="../images/arrowRed.png" width="50vw" height="25vw"> Don't want it today? Drag it left!
@@ -89,6 +93,7 @@
 					</center></div>
 				</div>
 				<div class="right">
+					<p id = "label2" class = "labels"><img src="../images/check.png" width="30px" height="30px"><br>Favorites</p>
 					<ul class="sortable" id="keep"></ul>
 				</div>
 				<div style="clear: both"></div>
@@ -122,7 +127,6 @@
 				<td><img src=\" ${data[counter].image} \" width=\" 150vw\" height = \" 100vw\"></img></td>
 				<td><h2> ${data[counter].RestName} </h2></td>
 				<br>
-
 				</td>
 				</tr>
 				<tr>
@@ -147,7 +151,11 @@
 		  	//increment counter
 		  	counter++;
 		}
-		else{ renderFinalResults(); 
+		else{
+			//Makes the button appear by removing the hidden attribute after going through all the elements
+			 document.getElementById("resultButton").removeAttribute("hidden");
+			 var instructions = document.getElementById('instructions');
+					instructions.parentNode.removeChild(instructions);
 		}
 	}
 
@@ -179,6 +187,12 @@
 		trash.empty();
 		trash.sortable("disable");
 		trash.css("visibility", "visible");
+
+		//Clear the labels from the page
+		var label = document.getElementById('label');
+				label.parentNode.removeChild(label);
+		var label2 = document.getElementById('label2');
+				label2.parentNode.removeChild(label2);
 
 		renderHeadingHTML();
 
